@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:33 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/18 23:25:35 by motroian         ###   ########.fr       */
+/*   Updated: 2023/09/19 22:37:49 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	check_zero(char **map, int x, int y)
 {
-	if (map[y + 1][x] == ' ')
+	if (map[y + 1][x] == 'V')
 		return (1);
-	if (map[y - 1][x] == ' ')
+	if (map[y - 1][x] == 'V')
 		return (1);
-	if (map[y][x + 1] == ' ')
+	if (map[y][x + 1] == 'V')
 		return (1);
-	if (map[y][x - 1] == ' ')
+	if (map[y][x - 1] == 'V')
 		return (1);
 	return (0);
 }
@@ -102,31 +102,57 @@ int	check_setting(char **str)
 
 void	get_map(t_data *data, int fd)
 {
-	int		i;
 	char	*str;
 	char	*tmp;
 
 	tmp = NULL;
-	i = 0;
 	str = get_next_line(fd);
-	while (str && str[i])
+	while (*str)
 	{
 		tmp = ft_strjoin(tmp, str);
 		free(str);
 		str = get_next_line(fd);
 	}
-	data->map = ft_split(tmp, '\n');
+	data->fichier = ft_split(tmp, '\n');
+	data->setting = ft_split(tmp, '\n');
 	free(tmp);
 }
-// void	split_map(char **map)
-// {
-// 	data->map = ;
-// }
+
+
+int	check_fin(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '1' && str[i + 1] == '1' && str[i + 2] == '1' && str[i + 3] == '1')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void	split_map(t_data *data, char **map)
+{
+	data->i = 0;
+	while (map[data->i])
+	{
+		if (check_fin(map[data->i]))
+		{
+			data->setting[data->i] = 0;
+			break ;
+		}
+		data->i++;	
+	}
+}
 
 int	parsing(t_data *data, int fd)
 {
 	get_map(data, fd);
-	split_map(data->map);
+	split_map(data, data->fichier);
+	for(int i = 0; data->setting[i]; i++)
+		printf("%s\n", data->setting[i]);
 	if (check_setting(data->map))
 		return (printf("Error settings"), free(data->map), 1);
 	if (check_map(data->map))
@@ -150,8 +176,6 @@ int main (int ac, char **av)
 		if (!parsing(data, fd))
 			return (printf("Error dans la map\n"));
 		// printf("%p\n", data->map);
-		// for(int i = 0; data->map[i]; i++)
-			// printf("%s\n", data->map[i]);
 	}
 	else
 		printf("Error nb arguments\n");

@@ -1,7 +1,7 @@
 #ifndef CUB_H
 # define CUB_H
 
-// # include "mlx/mlx/mlx.h"
+# include "../mlx/mlx/mlx.h"
 # include "../libft/libft.h"
 # include <errno.h>
 # include <fcntl.h>
@@ -19,8 +19,9 @@
 typedef struct t_data
 {
 	char	**map;
-	char	**seting;
-	
+	char	**setting;
+	char	**fichier;
+	int i;
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 }					t_data;
 

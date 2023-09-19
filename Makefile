@@ -15,7 +15,7 @@ LIBFT = libft.a
 ${NAME} : ${OBJS} ${LIBFT}
 			make -C libft/ all
 			mv libft/libft.a ./
-			cc ${FLAGS} ${INC} $(OBJS) -o $(NAME) libft.a 
+			cc ${FLAGS}  ${INC} $(OBJS) -o $(NAME) libft.a 
 
 ${LIBFT}:
 	make -C libft/ all
