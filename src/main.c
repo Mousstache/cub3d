@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:33 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/19 22:37:49 by motroian         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:14:51 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	get_map(t_data *data, int fd)
 		free(str);
 		str = get_next_line(fd);
 	}
-	data->fichier = ft_split(tmp, '\n');
+	data->map = ft_split(tmp, '\n');
 	data->setting = ft_split(tmp, '\n');
 	free(tmp);
 }
@@ -135,6 +135,9 @@ int	check_fin(char *str)
 
 void	split_map(t_data *data, char **map)
 {
+	int	i;
+
+	i = 0;
 	data->i = 0;
 	while (map[data->i])
 	{
@@ -145,15 +148,22 @@ void	split_map(t_data *data, char **map)
 		}
 		data->i++;	
 	}
+	while (map[data->i])
+	{
+		data->map[i] = map[data->i];
+		data->i++;
+		i++;
+	}
+	data->map[i] = 0; 
 }
 
 int	parsing(t_data *data, int fd)
 {
 	get_map(data, fd);
-	split_map(data, data->fichier);
-	for(int i = 0; data->setting[i]; i++)
-		printf("%s\n", data->setting[i]);
-	if (check_setting(data->map))
+	split_map(data, data->map);
+	for(int i = 0; data->map[i]; i++)
+		printf("%s\n", data->map[i]);
+	if (check_setting(data->setting))
 		return (printf("Error settings"), free(data->map), 1);
 	if (check_map(data->map))
 		return (printf("Error map\n"), free(data->map), 1);
