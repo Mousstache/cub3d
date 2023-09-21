@@ -6,12 +6,11 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 19:04:27 by motroian          #+#    #+#             */
-/*   Updated: 2023/02/13 23:58:02 by motroian         ###   ########.fr       */
+/*   Updated: 2023/09/21 20:03:38 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdio.h"
 
 int	count_str(char const *s, char c)
 {

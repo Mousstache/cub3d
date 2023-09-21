@@ -1,40 +1,15 @@
 NO ./path_to_the_north_texture
-  	NO			  ./path_to_the_north_texture
-  	NO			  a
-			              		 		 
-ERROR 
-NO ./path_to_the_north_texture ABC
-ON			  a
-
-
-NO ./path_to_the_north_texture
 SO ./path_to_the_south_texture
 WE ./path_to_the_west_texture
 EA ./path_to_the_east_texture
-ERROR
 
 F 220,100,
 CA 225,30,0,
 
-
-
-111111111111111111111111111111111111111111111
-
-
-1111111111111011
+1111111111111111
 1000000000000001
 1000000000000001
 1000000000000001
-100000000 000001
+100000000000001
 1000000000000001
 1111111111111111
-
-
-
-    11111111111
- 111000000001
-1000000000000111
- 101000001100001
-101 100001 100001
-101 100010100011
-111 111111111111

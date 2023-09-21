@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:47:03 by motroian          #+#    #+#             */
-/*   Updated: 2023/02/17 18:16:59 by motroian         ###   ########.fr       */
+/*   Updated: 2023/09/21 20:03:51 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int					ft_tolower(int c);
 // int				ft_atoi(const char *str);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
+void				free_all(char **tab);
 char				**ft_split(char const *s, char c);
 char				*ft_itoa(int n);
 char				*ft_realloc(char *s1, char *s2);

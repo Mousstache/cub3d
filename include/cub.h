@@ -18,16 +18,21 @@
 
 typedef struct t_data
 {
+	int		identifier[6];
 	char	**map;
+	char	**map_jeu;
 	char	**setting;
-	char	**fichier;
-	int i;
+	int		i;
+	int		line_bool;
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 }					t_data;
 
 char	*get_next_line(int fd);
 char	*ft_strjoin2(char *s1, char *s2);
 int		ft_strlen2(char *str);
+void	ft_printtab(char **str);
+void	free_palestine(t_data *data);
+char	**reform_map(char **tab);
 
 
 

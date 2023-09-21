@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_settings.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 19:56:17 by yahouari          #+#    #+#             */
-/*   Updated: 2023/09/21 20:10:05 by yahouari         ###   ########.fr       */
+/*   Created: 2023/09/21 20:58:56 by motroian          #+#    #+#             */
+/*   Updated: 2023/09/21 20:59:24 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,3 @@ int		fill_settings_array(char *str, t_data *data)
 		return (0);
 	return (1);
 }
-

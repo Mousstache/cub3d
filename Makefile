@@ -1,4 +1,4 @@
-SRCS = $(addprefix src/, main.c get_next_line.c get_next_line_utils.c)\
+SRCS = $(addprefix src/, main.c get_next_line.c get_next_line_utils.c check_map.c free_palestine.c check_settings.c reform_map.c)\
 
 NAME = cub3d
 
