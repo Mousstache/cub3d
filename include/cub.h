@@ -5,8 +5,6 @@
 # include "../libft/libft.h"
 # include <errno.h>
 # include <fcntl.h>
-# include <readline/history.h>
-# include <readline/readline.h>
 # include <stdarg.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -33,6 +31,11 @@ int		ft_strlen2(char *str);
 void	ft_printtab(char **str);
 void	free_palestine(t_data *data);
 char	**reform_map(char **tab);
+int		check_map(char **map);
+int		check_vide(char **map);
+int		parsing(t_data *data, int fd);
+int		check_setting(char **str);
+int		check_space(char *str);
 
 
 

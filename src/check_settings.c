@@ -6,11 +6,27 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 20:58:56 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/21 20:59:24 by motroian         ###   ########.fr       */
+/*   Updated: 2023/09/22 18:03:11 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+int	check_setting(char **str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (str && str[i] && j <= 6)
+	{
+		if (!check_space(str[i]))
+			j++;
+		i++;
+	}
+	return (0);
+}
 
 int get_first_char_pos(char *str)
 {
