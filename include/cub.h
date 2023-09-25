@@ -16,6 +16,9 @@
 
 typedef struct t_data
 {
+	void	*ptr;
+	int		x;
+	int		y;
 	int		identifier[6];
 	char	**map;
 	char	**map_jeu;
@@ -25,14 +28,15 @@ typedef struct t_data
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 }					t_data;
 
-char	*get_next_line(int fd);
+int		check_name(char *str);
+char	*get_next_line(int fd, int boolean);
 char	*ft_strjoin2(char *s1, char *s2);
 int		ft_strlen2(char *str);
 void	ft_printtab(char **str);
 void	free_palestine(t_data *data);
 char	**reform_map(char **tab);
 int		check_map(char **map);
-int		check_vide(char **map);
+int		check_vide(t_data *data, char **map);
 int		parsing(t_data *data, int fd);
 int		check_setting(char **str);
 int		check_space(char *str);

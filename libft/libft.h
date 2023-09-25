@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:47:03 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/21 20:03:51 by motroian         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:56:51 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,5 @@ int					h(unsigned long int nb, char *base);
 // size_t	ft_strlen(char *str);
 
 // get_next_line
-char	*get_next_line(int fd);
 
 #endif

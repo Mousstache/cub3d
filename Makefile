@@ -6,7 +6,7 @@ INC = -Iinclude
 
 FLAGS = -g3 -Wall -Werror -Wextra
 
-MLX_FLAGS		=	-lm -lmlx -lXext -lX11
+MLX_FLAGS		=	-lm -lXext -lX11
 
 OBJS = ${SRCS:.c=.o}
 
@@ -15,7 +15,7 @@ LIBFT = libft.a
 ${NAME} : ${OBJS} ${LIBFT}
 			make -C libft/ all
 			mv libft/libft.a ./
-			cc ${FLAGS}  ${INC} $(OBJS) -o $(NAME) libft.a 
+			cc ${FLAGS}  ${INC} ${MLX_FLAGS} $(OBJS) -o $(NAME) libft.a 
 
 ${LIBFT}:
 	make -C libft/ all
@@ -24,7 +24,7 @@ ${LIBFT}:
 all : ${NAME}
 
 %.o:%.c
-		cc ${FLAGS} ${INC}  -c $< -o $@
+		cc ${FLAGS} ${INC} -c $< -o $@
 
 leaks: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes   ./cub3d map.cub

@@ -6,11 +6,34 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:39 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/22 18:22:16 by motroian         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:59:15 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "cub.h"
+
+int	check_name(char *str)
+{
+	int	i;
+
+	i = ft_strlen(str);
+	if (str[i - 1] != 'b')
+		return (0);
+	if (str[i - 2] != 'u')
+		return (0);
+	if (str[i - 3] != 'c')
+		return (0);
+	if (str[i - 4] != '.')
+		return (0);
+	i = i - 5;
+	while (str[i])
+	{
+		if (str[i] == '.')
+			return (0);
+		i--;
+	}
+	return (1);
+}
 
 int	check_space(char *str)
 {
@@ -48,31 +71,32 @@ void	get_map(t_data *data, int fd)
 
 	tmp = NULL;
 	i = 0;
-	str = get_next_line(fd);
+	str = get_next_line(fd, 0);
 	while (str && i <= 5)
 	{
 		if (check_space(str))
 			i++;
 		tmp = ft_strjoin2(tmp, str);
 		free(str);
-		str = get_next_line(fd);
+		str = get_next_line(fd, 0);
 	}
 	data->setting = ft_split(tmp, '\n');
 	free(str);
 	free(tmp);
 	tmp = NULL;
-	str = get_next_line(fd);
+	str = get_next_line(fd, 0);
 	while (*str)
 	{
 		tmp = ft_strjoin2(tmp, str);
 		free(str);
-		str = get_next_line(fd);
+		str = get_next_line(fd, 0);
 	}
+	get_next_line(fd, 1);
+	free(str);
 	check_line(data, tmp);
 	data->map_jeu = ft_split(tmp, '\n');
 	data->map = ft_split(tmp, '\n');
 	free(tmp);
-	free(str);
 }
 
 int	parsing(t_data *data, int fd)
@@ -82,12 +106,12 @@ int	parsing(t_data *data, int fd)
 	if (data->line_bool == 1)
 		return (printf("Error map : ligne vide\n"), 1);
 	if (check_setting(data->setting))
-		return (printf("Error settings"), free_palestine(data), 1);
-	if (!check_map(data->map))
-		return (printf("Error map : caractere inconnu\n"), free_palestine(data), 1);
+		return (printf("Error settings"), 1);
+	if (check_map(data->map) == 1)
+		return (printf("Error map : caractere inconnu\n"), 1);
 	data->map = reform_map(data->map);
 	ft_printtab(data->map);
-	if (check_vide(data->map) == 1)
-		return (printf("Error map : trou dans la map\n"), free_palestine(data), 1);
+	if (check_vide(data, data->map) == 1)
+		return (printf("Error map : trou dans la map\n"), 1);
 	return (0);
 }
