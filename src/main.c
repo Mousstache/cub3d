@@ -6,16 +6,16 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:33 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/25 20:06:19 by motroian         ###   ########.fr       */
+/*   Updated: 2023/09/26 23:27:52 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-// void	graphic_part(t_data *data)
-// {
-// 	data->ptr = mlx_init();
-// }
+void	graphic_part(t_data *data)
+{
+	data->ptr = mlx_init();
+}
 
 int main (int ac, char **av)
 {

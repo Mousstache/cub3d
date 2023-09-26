@@ -20,6 +20,8 @@ typedef struct t_data
 	int		x;
 	int		y;
 	int		identifier[6];
+	int		sol[3];
+	int		ciel[3];
 	char	**map;
 	char	**map_jeu;
 	char	**setting;
@@ -38,8 +40,9 @@ char	**reform_map(char **tab);
 int		check_map(char **map);
 int		check_vide(t_data *data, char **map);
 int		parsing(t_data *data, int fd);
-int		check_setting(char **str);
+int		check_setting(char **str, t_data *data);
 int		check_space(char *str);
+int		fill_settings_array(char *str, t_data *data);
 
 
 

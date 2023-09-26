@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:47:49 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/22 18:47:19 by motroian         ###   ########.fr       */
+/*   Updated: 2023/09/26 23:33:50 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ int	get_max_length(char **tab)
 	return (tmp);
 }
 
-void	get_settings(t_data *data)
-{
-	int i;
+// void	get_settings(t_data *data)
+// {
+// 	int i;
 
-	i = 0;
-	while (data->settings[i])
-	{
-		if (data->settings[i][0] == 'C')
-		else if (data->settings[i][0] == 'F')
-		else
-	}
-}
+// 	i = 0;
+// 	while (data->setting[i])
+// 	{
+// 		if (data->setting[i][0] == 'C')
+// 		else if (data->setting[i][0] == 'F')
+// 		else
+// 	}
+// }
 
 char *fill_string(char *str, int len)
 {

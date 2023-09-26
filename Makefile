@@ -15,7 +15,7 @@ LIBFT = libft.a
 ${NAME} : ${OBJS} ${LIBFT}
 			make -C libft/ all
 			mv libft/libft.a ./
-			cc ${FLAGS}  ${INC} ${MLX_FLAGS} $(OBJS) -o $(NAME) libft.a 
+		cc $(OBJS) ${INC} mlx/libmlx.a mlx/libmlx_Linux.a -L. -lXext -L. -lX11 ${FLAGS} -o $(NAME) libft.a
 
 ${LIBFT}:
 	make -C libft/ all
@@ -24,7 +24,7 @@ ${LIBFT}:
 all : ${NAME}
 
 %.o:%.c
-		cc ${FLAGS} ${INC} -c $< -o $@
+		cc ${FLAGS} ${INC}  -c $< -o $@
 
 leaks: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes   ./cub3d map.cub

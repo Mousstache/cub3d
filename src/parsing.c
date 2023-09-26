@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:39 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/25 20:59:15 by motroian         ###   ########.fr       */
+/*   Updated: 2023/09/26 23:46:35 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ int	check_space(char *str)
 	i = 0;
 	while (str && str[i])
 	{
-		if (str[i] == ' ' || str[i] == '\t')
-			return (1);
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 
@@ -74,17 +74,17 @@ void	get_map(t_data *data, int fd)
 	str = get_next_line(fd, 0);
 	while (str && i <= 5)
 	{
-		if (check_space(str))
+		if (!check_space(str))
+		{
 			i++;
-		tmp = ft_strjoin2(tmp, str);
+			tmp = ft_strjoin2(tmp, str);
+		}
 		free(str);
 		str = get_next_line(fd, 0);
 	}
 	data->setting = ft_split(tmp, '\n');
-	free(str);
 	free(tmp);
 	tmp = NULL;
-	str = get_next_line(fd, 0);
 	while (*str)
 	{
 		tmp = ft_strjoin2(tmp, str);
@@ -103,9 +103,10 @@ int	parsing(t_data *data, int fd)
 {
 	data->line_bool = 0;
 	get_map(data, fd);
+	// ft_printtab(data->setting);
 	if (data->line_bool == 1)
 		return (printf("Error map : ligne vide\n"), 1);
-	if (check_setting(data->setting))
+	if (check_setting(data->setting, data))
 		return (printf("Error settings"), 1);
 	if (check_map(data->map) == 1)
 		return (printf("Error map : caractere inconnu\n"), 1);
