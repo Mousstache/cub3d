@@ -28,6 +28,19 @@ int	get_max_length(char **tab)
 	return (tmp);
 }
 
+void	get_settings(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (data->settings[i])
+	{
+		if (data->settings[i][0] == 'C')
+		else if (data->settings[i][0] == 'F')
+		else
+	}
+}
+
 char *fill_string(char *str, int len)
 {
 	int i;
@@ -35,11 +48,12 @@ char *fill_string(char *str, int len)
 	char *new;
 
 	i = 0;
-	j = 0;
-	new = malloc(sizeof(char) * len + 1);
+	j = 1;
+	new = malloc(sizeof(char) * len + 3);
 	if (!new)
 		return (NULL);
-	while (str[i])
+	new[0] = 'V';
+	while (str && str[i])
 	{
 		if (str[i] == ' ')
 			new[j] = 'V';
@@ -48,9 +62,10 @@ char *fill_string(char *str, int len)
 		i++;
 		j++;
 	}
-	while (j < len)
+	while (j <= len)
 		new[j++] = 'V';
-	new[j] = 0;
+	new[j] = 'V';
+	new[j + 1] = 0;
 	return (new);
 }
 
@@ -71,17 +86,19 @@ char **reform_map(char **tab)
 	char **new;
 
 	i = 0;
-	j = 0;
-	new = malloc(sizeof(char *) * (count_string(tab) + 1));
+	j = 1;
+	new = malloc(sizeof(char *) * (count_string(tab) + 3));
 	if (!new)
 		return (NULL);
+	new[0] = fill_string(NULL, get_max_length(tab));
 	while (tab[i])
 	{
 		new[j] = fill_string(tab[i], get_max_length(tab));
 		i++;
 		j++;
 	}
-	new[j] = NULL;
+	new[j] = fill_string(NULL, get_max_length(tab));
+	new[j + 1] = NULL;
 	if (tab)
 		free_all(tab);
 	return (new);
