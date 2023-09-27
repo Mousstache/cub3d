@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 21:33:47 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/25 21:01:14 by motroian         ###   ########.fr       */
+/*   Updated: 2023/09/27 18:51:39 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,30 @@ int	check_map(char **map)
 		y++;
 	}
 	return (0);
+}
+
+int	check_perso(t_data *data)
+{
+	int	z;
+	int	y;
+	int	x;
+
+	y = 0;
+	z = 0;
+	while (data->map[y])
+	{
+		x = 0;
+		while (data->map[y][x])
+		{
+			if ((data->map[y][x] == 'N') || (data->map[y][x] == 'S') || (data->map[y][x] == 'E')
+				|| (data->map[y][x] == 'W'))
+					z++;
+			x++;
+		}
+		y++;
+	}
+	if (z == 1)
+		return (0);
+	else
+		return (1);
 }

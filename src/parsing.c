@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:39 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/26 23:46:35 by motroian         ###   ########.fr       */
+/*   Updated: 2023/09/27 19:21:51 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,11 @@ void	get_map(t_data *data, int fd)
 	data->setting = ft_split(tmp, '\n');
 	free(tmp);
 	tmp = NULL;
+	while (check_space(str))
+	{
+		free(str);
+		str = get_next_line(fd, 0);
+	}
 	while (*str)
 	{
 		tmp = ft_strjoin2(tmp, str);
@@ -112,7 +117,9 @@ int	parsing(t_data *data, int fd)
 		return (printf("Error map : caractere inconnu\n"), 1);
 	data->map = reform_map(data->map);
 	ft_printtab(data->map);
-	if (check_vide(data, data->map) == 1)
+	if (check_vide(data, data->map))
 		return (printf("Error map : trou dans la map\n"), 1);
+	if (check_perso(data))
+		return (printf("Error map : Mauvais nb de perso\n"), 1);
 	return (0);
 }

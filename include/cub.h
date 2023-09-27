@@ -43,6 +43,7 @@ int		parsing(t_data *data, int fd);
 int		check_setting(char **str, t_data *data);
 int		check_space(char *str);
 int		fill_settings_array(char *str, t_data *data);
+int		check_perso(t_data *data);
 
 
 
