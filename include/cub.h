@@ -16,9 +16,9 @@
 
 typedef struct t_data
 {
-	void	*ptr;
-	int		x;
-	int		y;
+	void	*mlx;
+	void	*win;
+	int		fd;
 	int		identifier[6];
 	int		sol[3];
 	int		ciel[3];
@@ -35,7 +35,7 @@ char	*get_next_line(int fd, int boolean);
 char	*ft_strjoin2(char *s1, char *s2);
 int		ft_strlen2(char *str);
 void	ft_printtab(char **str);
-void	free_palestine(t_data *data);
+int		free_palestine(t_data *data);
 char	**reform_map(char **tab);
 int		check_map(char **map);
 int		check_vide(t_data *data, char **map);
