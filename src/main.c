@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:33 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/29 20:19:30 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/02 22:35:53 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	graphic_part(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		exit(EXIT_FAILURE);
+	calc(data);
 	data->win = mlx_new_window(data->mlx, 1200, 800, "le cuvub");
 	mlx_hook(data->win, 17, 0, &free_palestine, data);
 	mlx_loop(data->mlx);
@@ -37,6 +38,10 @@ int main (int ac, char **av)
 		if (parsing(&data, fd))
 			return (close(fd), free_palestine(&data), 1);
 		close(fd);
+		data.game.dirx = -1;
+		data.game.diry = 0;
+		data.game.planex = 0;
+		data.game.planey = 0.66;
 		graphic_part(&data);
 		free_palestine(&data);
 		close(fd);

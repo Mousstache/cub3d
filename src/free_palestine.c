@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:50:27 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/29 20:17:45 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/02 21:32:50 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 int	free_palestine(t_data *data)
 {
-	close(data->fd);
 	free_all(data->setting);
 	free_all(data->map);
-	free_all(data->map_jeu);
+	free_all(data->game.map_jeu);
 	mlx_clear_window(data->mlx, data->win);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);

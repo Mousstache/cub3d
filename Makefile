@@ -1,4 +1,13 @@
-SRCS = $(addprefix src/, main.c get_next_line.c  get_next_line_utils.c  check_map.c  free_palestine.c  check_settings.c  reform_map.c  parsing.c)\
+SRCS =	src/parsing/parsing.c \
+		src/parsing/check_map.c \
+		src/parsing/check_settings.c \
+		src/parsing/reform_map.c \
+		src/parsing/get_next_line.c \
+		src/parsing/get_next_line_utils.c \
+		src/partie_jeu/move.c \
+		src/partie_jeu/calcul.c \
+		src/main.c \
+		src/free_palestine.c \
 
 NAME = cub3d
 
@@ -15,7 +24,7 @@ LIBFT = libft.a
 ${NAME} : ${OBJS} ${LIBFT}
 			make -C libft/ all
 			mv libft/libft.a ./
-		cc $(OBJS) ${INC} mlx/libmlx.a mlx/libmlx_Linux.a -L. -lXext -L. -lX11 ${FLAGS} -o $(NAME) libft.a
+		cc $(OBJS) ${INC} mlx/libmlx.a mlx/libmlx_Linux.a -L. -lXext -L. -lX11 -lm ${FLAGS} -o $(NAME) libft.a
 
 ${LIBFT}:
 	make -C libft/ all

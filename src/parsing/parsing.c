@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:39 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/27 22:58:36 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/02 21:07:55 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,13 +116,16 @@ void	get_map(t_data *data, int fd)
 	get_next_line(fd, 1);
 	free(str);
 	check_line(data, tmp);
-	data->map_jeu = ft_split(tmp, '\n');
+	data->game.map_jeu = ft_split(tmp, '\n');
 	data->map = ft_split(tmp, '\n');
 	free(tmp);
 }
 
 int	parsing(t_data *data, int fd)
 {
+	t_game	game;
+
+	game = data->game;
 	data->line_bool = 0;
 	get_map(data, fd);
 	// ft_printtab(data->setting);
@@ -136,7 +139,7 @@ int	parsing(t_data *data, int fd)
 		return (printf("Error map : caractere inconnu\n"), 1);
 	data->map = reform_map(data->map);
 	// ft_printtab(data->map);
-	if (check_vide(data, data->map))
+	if (check_vide(data->map))
 		return (printf("Error map : trou dans la map\n"), 1);
 	if (check_perso(data))
 		return (printf("Error map : Mauvais nb de perso\n"), 1);
