@@ -6,13 +6,13 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:59:13 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/02 22:55:56 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/04 22:10:50 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	key_pres(int key, t_data *data)
+int	key_press(int key, t_data *data)
 {
 	printf("keypres\n");
 	if (key == 'w')

@@ -20,8 +20,8 @@
 
 typedef struct t_game
 {
-	int		posx;
-	int		posy;
+	double	posx;
+	double	posy;
 	double	dirx;
 	double	diry;
 	double	planex;
@@ -66,6 +66,8 @@ int			fill_settings_array(char *str, t_data *data);
 int			check_perso(t_data *data);
 
 void		calc(t_data *data);
+int			key_press(int key, t_data *data);
+
 
 
 #endif

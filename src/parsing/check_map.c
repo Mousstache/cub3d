@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 21:33:47 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/03 19:05:02 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/03 21:55:34 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,9 @@ int	check_perso(t_data *data)
 				|| (data->map[y][x] == 'W'))
 			{
 				z++;
-				data->game.posx = y;
-				data->game.posy = x;
+				// data->game.posx = y;
+				// data->game.posy = x;
 				data->dir = data->map[y][x];
-				printf("%d\n", data->game.posx);
-
 			}
 			x++;
 		}
