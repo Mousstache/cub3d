@@ -1,0 +1,143 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_settings_colors.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/06 20:08:38 by yahouari          #+#    #+#             */
+/*   Updated: 2023/10/06 20:51:49 by yahouari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub.h"
+
+int	ft_isspace(char c)
+{
+	if (c == ' ' || c == '\t')
+		return (1);
+	return (0);
+}
+
+int 	check_virgule(char *str)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == ',')
+			count++;
+		i++;
+	}
+	if (count > 2)
+		return (0);
+	return (1);
+}
+
+int	check_colors_settings2(t_data *data, int i, int j, int k)
+{
+	if (!check_virgule(data->setting[i]))
+		return (0);
+	while (data->setting[i][j])
+	{
+		while (data->setting[i][j] && ft_isspace(data->setting[i][j]))
+			j++;
+		if (ft_isdigit(data->setting[i][j]))
+		{
+			k++;
+			while (data->setting[i][j] && ft_isdigit(data->setting[i][j]))
+				j++;
+		}
+		while (data->setting[i][j] && ft_isspace(data->setting[i][j]))
+			j++;
+		if (k < 3 && data->setting[i][j++] == ',')
+			continue ;
+		else if (k == 3 && data->setting[i][j] == 0)
+		{
+			printf("caca\n");
+			return (1);
+		}	
+		else
+			return (0);
+	}
+	return (1);
+}
+
+int	check_colors_settings(t_data *data)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 4;
+	while (i < 6)
+	{
+		k = 0;
+		j = 1;
+		if (!check_colors_settings2(data, i, j, k))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	fill_colors_array(char **str, char **str1, t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < 3)
+	{
+		if (str[i])
+			data->settings->floor_colors[i] = ft_atoi(str[i]);
+		else
+			return (free_all(str), free_all(str1), 0);
+		i++;
+	}
+	i = 0;
+	while (i < 3)
+	{
+		if (str[i])
+			data->settings->ceiling_colors[i] = ft_atoi(str1[i]);
+		else
+			return (free_all(str), free_all(str1), 0);
+		i++;
+	}
+	free_all(str);
+	free_all(str1);
+	return (1);
+}
+
+int	check_digit_colors(int *tab)
+{
+	int i;
+
+	i = 0;
+	while (i < 3)
+	{
+		if (tab[i] > 255 || tab[i] < 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	get_colors_settings(t_data *data)
+{
+	if (!check_colors_settings(data))
+		return (printf("cest pas bon morray"));
+	if (!fill_colors_array(ft_split(data->setting[4] + 1, ','),
+							ft_split(data->setting[5] + 1, ','),
+							data))
+		return (printf("cest pas bon pelo"));
+	if (check_digit_colors(data->settings->floor_colors) || 
+		!check_digit_colors(data->settings->ceiling_colors))
+	{
+		printf("zboub\n");
+		return (0);
+	}
+	return (1);
+}
