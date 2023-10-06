@@ -31,6 +31,9 @@ typedef struct t_game
 	double	movespeed;
 	double	rotspeed;
 	char	**map_jeu;
+	int		floor_colors[3];
+	int		ceiling_colors[3];
+	char	*paths[4];
 } 	t_game;
 
 typedef struct t_data
@@ -50,6 +53,7 @@ typedef struct t_data
 	t_game	game;
 }	t_data;
 
+int			get_first_char_pos(char *str);
 int			check_name(char *str);
 char		*get_next_line(int fd, int boolean);
 char		*ft_strjoin2(char *s1, char *s2);
@@ -60,9 +64,9 @@ char		**reform_map(char **tab);
 int			check_map(char **map);
 int			check_vide(char **map);
 int			parsing(t_data *data, int fd);
-int			check_setting(char **str, t_data *data);
+int			check_setting(char **str);
 int			check_space(char *str);
-int			fill_settings_array(char *str, t_data *data);
+int			fill_settings_array(char **str, t_data *data);
 int			check_perso(t_data *data);
 
 void		calc(t_data *data);
@@ -75,6 +79,10 @@ void		move_up(t_data *data);
 void		move_down(t_data *data);
 void		move_left(t_data *data);
 void		move_right(t_data *data);
+int			get_colors_settings(t_data *data);
+int			get_first_char_pos(char *str);
+
+
 
 
 

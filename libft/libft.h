@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:47:03 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/25 20:56:51 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/06 21:13:23 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void				ft_putstr_e(char *str);
 // rest
 int					ft_toupper(int c);
 int					ft_tolower(int c);
-// int				ft_atoi(const char *str);
+int					ft_atoi(const char *str);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 void				free_all(char **tab);

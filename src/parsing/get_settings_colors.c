@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_settings_colors.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:08:38 by yahouari          #+#    #+#             */
-/*   Updated: 2023/10/06 20:51:49 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/10/06 21:04:01 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	fill_colors_array(char **str, char **str1, t_data *data)
 	while (i < 3)
 	{
 		if (str[i])
-			data->settings->floor_colors[i] = ft_atoi(str[i]);
+			data->game.floor_colors[i] = ft_atoi(str[i]);
 		else
 			return (free_all(str), free_all(str1), 0);
 		i++;
@@ -101,7 +101,7 @@ int	fill_colors_array(char **str, char **str1, t_data *data)
 	while (i < 3)
 	{
 		if (str[i])
-			data->settings->ceiling_colors[i] = ft_atoi(str1[i]);
+			data->game.ceiling_colors[i] = ft_atoi(str1[i]);
 		else
 			return (free_all(str), free_all(str1), 0);
 		i++;
@@ -133,8 +133,8 @@ int	get_colors_settings(t_data *data)
 							ft_split(data->setting[5] + 1, ','),
 							data))
 		return (printf("cest pas bon pelo"));
-	if (check_digit_colors(data->settings->floor_colors) || 
-		!check_digit_colors(data->settings->ceiling_colors))
+	if (check_digit_colors(data->game.floor_colors) || 
+		!check_digit_colors(data->game.ceiling_colors))
 	{
 		printf("zboub\n");
 		return (0);

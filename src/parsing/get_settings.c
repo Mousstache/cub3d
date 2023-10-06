@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_settings.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 21:48:23 by yahouari          #+#    #+#             */
-/*   Updated: 2023/10/06 20:10:38 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/10/06 21:05:14 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ int	check_order_settings(t_data *data)
 	{
 		pos = get_first_char_pos(data->setting[i]);
 		if (i == 0 && data->setting[i] && data->setting[i][pos] == 'N')
-			data->settings->paths[i] = reform_string(data->setting[i], 2, pos);
+			data->game.paths[i] = reform_string(data->setting[i], 2, pos);
 		else if (i == 1 && data->setting[i] && data->setting[i][pos] == 'S')
-			data->settings->paths[i] = reform_string(data->setting[i], 2, pos);
+			data->game.paths[i] = reform_string(data->setting[i], 2, pos);
 		else if (i == 2 && data->setting[i] && data->setting[i][pos] == 'W')
-			data->settings->paths[i] = reform_string(data->setting[i], 2, pos);
+			data->game.paths[i] = reform_string(data->setting[i], 2, pos);
 		else if (i == 3 && data->setting[i] && data->setting[i][pos] == 'E')
-			data->settings->paths[i] = reform_string(data->setting[i], 2, pos);
+			data->game.paths[i] = reform_string(data->setting[i], 2, pos);
 		else if (i == 4 && data->setting[i][pos] == 'F')
 			i += 0;
 		else if (i == 5 && data->setting[i][pos] == 'C')

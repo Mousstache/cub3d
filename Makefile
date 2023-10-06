@@ -1,4 +1,6 @@
 SRCS =	src/parsing/parsing.c \
+		src/parsing/get_settings.c \
+		src/parsing/get_settings_colors.c \
 		src/parsing/check_map.c \
 		src/parsing/check_settings.c \
 		src/parsing/reform_map.c \
