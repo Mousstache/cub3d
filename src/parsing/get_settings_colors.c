@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_settings_colors.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:08:38 by yahouari          #+#    #+#             */
-/*   Updated: 2023/10/06 21:04:01 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/06 21:59:52 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,16 +128,13 @@ int	check_digit_colors(int *tab)
 int	get_colors_settings(t_data *data)
 {
 	if (!check_colors_settings(data))
-		return (printf("cest pas bon morray"));
+		return (0);
 	if (!fill_colors_array(ft_split(data->setting[4] + 1, ','),
 							ft_split(data->setting[5] + 1, ','),
 							data))
-		return (printf("cest pas bon pelo"));
+		return (0);
 	if (check_digit_colors(data->game.floor_colors) || 
 		!check_digit_colors(data->game.ceiling_colors))
-	{
-		printf("zboub\n");
 		return (0);
-	}
 	return (1);
 }

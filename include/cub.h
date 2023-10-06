@@ -3,9 +3,9 @@
 
 # include "../libft/libft.h"
 # include "../mlx/mlx/mlx.h"
-# include <math.h>
 # include <errno.h>
 # include <fcntl.h>
+# include <math.h>
 # include <stdarg.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -14,9 +14,8 @@
 # include <sys/wait.h>
 # define LL_MAX 9223372036854775807UL
 # define LL_MIN -9223372036854775807
-#define width 640
-#define height 480
-
+# define width 640
+# define height 480
 
 typedef struct t_game
 {
@@ -34,7 +33,7 @@ typedef struct t_game
 	int		floor_colors[3];
 	int		ceiling_colors[3];
 	char	*paths[4];
-} 	t_game;
+}			t_game;
 
 typedef struct t_data
 {
@@ -51,7 +50,7 @@ typedef struct t_data
 	int		i;
 	int		line_bool;
 	t_game	game;
-}	t_data;
+}			t_data;
 
 int			get_first_char_pos(char *str);
 int			check_name(char *str);
@@ -81,10 +80,6 @@ void		move_left(t_data *data);
 void		move_right(t_data *data);
 int			get_colors_settings(t_data *data);
 int			get_first_char_pos(char *str);
-
-
-
-
-
+int	check_order_settings(t_data *data);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_settings.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 21:48:23 by yahouari          #+#    #+#             */
-/*   Updated: 2023/10/06 21:05:14 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/06 21:58:37 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ int	check_order_settings(t_data *data)
 		else if (i == 4 && data->setting[i][pos] == 'F')
 			i += 0;
 		else if (i == 5 && data->setting[i][pos] == 'C')
-			get_colors_settings(data);
+		{
+			if (!get_colors_settings(data))
+				return (0);
+		}
 		else
 			return (0);
 	}
