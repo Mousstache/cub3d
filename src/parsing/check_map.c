@@ -6,11 +6,37 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 21:33:47 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/03 21:55:34 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/06 20:10:33 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+// void	stock_info(t_data *data)
+// {
+// 	int	y;
+// 	int	x;
+
+// 	y = 0;
+// 	while (data->map[y])
+// 	{
+// 		x = 0;
+// 		while (data->map[y][x])
+// 		{
+// 			if (data->map[y][x] == 'N' || data->map[y][x] == 'S'
+// 				|| data->map[y][x] == 'E' || data->map[y][x] == 'W')
+// 			{
+// 				data->game.posx = (double)y;
+// 				data->game.posy = (double)x;
+// 				if (data->map[y][x] == 'N')
+// 					data->dir = 'N';
+// 				data->dir = data->map[y][x];
+// 			}
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// }
 
 int	check_zero(char **map, int x, int y)
 {
@@ -88,8 +114,8 @@ int	check_perso(t_data *data)
 				|| (data->map[y][x] == 'W'))
 			{
 				z++;
-				// data->game.posx = y;
-				// data->game.posy = x;
+				data->game.posx = (double)y;
+				data->game.posy = (double)x;
 				data->dir = data->map[y][x];
 			}
 			x++;

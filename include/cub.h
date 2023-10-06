@@ -67,6 +67,15 @@ int			check_perso(t_data *data);
 
 void		calc(t_data *data);
 int			key_press(int key, t_data *data);
+void		graphic_part(t_data *data);
+void		verline(t_data *data, int start, int end, int x, int color);
+void		rotate_left(t_data *data);
+void		rotate_right(t_data *data);
+void		move_up(t_data *data);
+void		move_down(t_data *data);
+void		move_left(t_data *data);
+void		move_right(t_data *data);
+
 
 
 

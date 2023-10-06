@@ -6,11 +6,11 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:39 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/02 21:07:55 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:55:34 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub.h"
+#include "cub.h"
 
 int	check_name(char *str)
 {
@@ -49,7 +49,6 @@ int	check_space(char *str)
 	return (1);
 }
 
-
 void	check_line(t_data *data, char *str)
 {
 	int	i;
@@ -63,7 +62,6 @@ void	check_line(t_data *data, char *str)
 	}
 }
 
-
 int	check_spaceline(char **str)
 {
 	int	i;
@@ -71,7 +69,7 @@ int	check_spaceline(char **str)
 
 	i = 0;
 	j = 0;
-	while (str[i])
+	while (str && str[i])
 	{
 		if (check_space(str[i]))
 			return (1);
@@ -80,7 +78,30 @@ int	check_spaceline(char **str)
 	return (0);
 }
 
-void	get_map(t_data *data, int fd)
+void get_map(t_data *data, int fd, char *str)
+{
+	int		i;
+	char	*tmp;
+
+	tmp = NULL;
+	i = 0;
+	while (*str)
+	{
+		if (!check_space(str))
+		{
+			i++;
+			tmp = ft_strjoin2(tmp, str);
+		}
+		check_line(data, str);
+		free(str);
+		str = get_next_line(fd, 0);
+	}
+	data->map = ft_split(tmp, '\n');
+	free(tmp);
+	free(str);
+}
+
+void	get_setting(t_data *data, int fd)
 {
 	int		i;
 	char	*str;
@@ -99,26 +120,14 @@ void	get_map(t_data *data, int fd)
 		free(str);
 		str = get_next_line(fd, 0);
 	}
-	data->setting = ft_split(tmp, '\n');
-	free(tmp);
-	tmp = NULL;
 	while (check_space(str))
 	{
 		free(str);
 		str = get_next_line(fd, 0);
 	}
-	while (*str)
-	{
-		tmp = ft_strjoin2(tmp, str);
-		free(str);
-		str = get_next_line(fd, 0);
-	}
-	get_next_line(fd, 1);
-	free(str);
-	check_line(data, tmp);
-	data->game.map_jeu = ft_split(tmp, '\n');
-	data->map = ft_split(tmp, '\n');
+	data->setting = ft_split(tmp, '\n');
 	free(tmp);
+	get_map(data, fd, str);
 }
 
 int	parsing(t_data *data, int fd)
@@ -127,18 +136,16 @@ int	parsing(t_data *data, int fd)
 
 	game = data->game;
 	data->line_bool = 0;
-	get_map(data, fd);
-	// ft_printtab(data->setting);
+	get_setting(data, fd);
 	if (data->line_bool == 1)
 		return (printf("Error map : ligne vide\n"), 1);
-	if(check_spaceline(data->map))
+	if (check_spaceline(data->map))
 		return (printf("Error map : ligne vide spaceline\n"), 1);
 	if (check_setting(data->setting, data))
 		return (printf("Error settings"), 1);
 	if (check_map(data->map) == 1)
 		return (printf("Error map : caractere inconnu\n"), 1);
 	data->map = reform_map(data->map);
-	// ft_printtab(data->map);
 	if (check_vide(data->map))
 		return (printf("Error map : trou dans la map\n"), 1);
 	if (check_perso(data))
