@@ -26,6 +26,8 @@ typedef struct	s_img
 	int		size_l;
 	int		bpp;
 	int		endian;
+	int		img_width;
+	int		img_height;
 }				t_img;
 
 typedef struct t_game
@@ -46,7 +48,7 @@ typedef struct t_game
 	int		floor_colors[3];
 	int		ceiling_colors[3];
 	char	*paths[4];
-	int		texture[8][texHauteur * texLargeur];
+	int		**texture;
 	t_img	img;
 }			t_game;
 
@@ -88,7 +90,7 @@ int			check_perso(t_data *data);
 
 void		calc(t_data *data);
 int			key_press(int key, t_data *data);
-void		graphic_part(t_data *data);
+int			graphic_part(t_data *data);
 void		verline(t_data *data, int start, int end, int x, int color);
 void		rotate_left(t_data *data);
 void		rotate_right(t_data *data);

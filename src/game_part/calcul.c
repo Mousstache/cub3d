@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 20:46:36 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/09 19:07:57 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/09 22:41:08 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	calc(t_data *data)
 				data->game.buf[i][j] = 0;
 			}
 		}
-		data->game.re_buf = 0;
+		// data->game.re_buf = 0;
 	}
 	while (x < width)
 	{
@@ -118,7 +118,7 @@ void	calc(t_data *data)
 		drawEnd = lineHeight / 2 + height / 2;
 		if (drawEnd >= height)
 			drawEnd = height - 1;
-		int texNum = data->map[mapx][mapy];
+		int texNum = 1;
 
 		// calculate value of wallX
 		double wallX;
@@ -145,8 +145,8 @@ void	calc(t_data *data)
 			// Cast the texture coordinate to integer, and mask with (texHauteur - 1) in case of overflow
 			int texY = (int)texPos & (texHauteur - 1);
 			texPos += step;
-			// printf("%d %f %f\n", texY, texPos, step);
-			printf("%d\n", data->game.texture[texNum][texHauteur * texY + texX]);
+			// printf("%d \n", texNum);
+			// printf("%d\n", data->game.texture[texNum][texHauteur * texY + texX]);
 			int color = data->game.texture[texNum][texHauteur * texY + texX];
 			// make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
 			if (side == 1)
