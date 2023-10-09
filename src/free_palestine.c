@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:50:27 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/06 18:58:17 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:09:44 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ void free_mlx(t_data *data)
 
 int	free_palestine(t_data *data)
 {
+	// for (int i = 0; i < 4; i++)
+	// {
+	// 	printf("freeing %s\n", data->game.paths[i]);
+	// 	free(data->game.paths[i]);
+	// }
 	free_all(data->setting);
 	free_all(data->map);
 	free_all(data->game.map_jeu);

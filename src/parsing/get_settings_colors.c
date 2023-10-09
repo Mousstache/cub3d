@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_settings_colors.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:08:38 by yahouari          #+#    #+#             */
-/*   Updated: 2023/10/06 21:59:52 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/10/06 22:16:06 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ int	check_colors_settings2(t_data *data, int i, int j, int k)
 		if (k < 3 && data->setting[i][j++] == ',')
 			continue ;
 		else if (k == 3 && data->setting[i][j] == 0)
-		{
-			printf("caca\n");
 			return (1);
-		}	
 		else
 			return (0);
 	}
@@ -133,7 +130,7 @@ int	get_colors_settings(t_data *data)
 							ft_split(data->setting[5] + 1, ','),
 							data))
 		return (0);
-	if (check_digit_colors(data->game.floor_colors) || 
+	if (!check_digit_colors(data->game.floor_colors) || 
 		!check_digit_colors(data->game.ceiling_colors))
 		return (0);
 	return (1);

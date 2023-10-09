@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:39 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/06 21:20:40 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:39:15 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,8 +141,8 @@ int	parsing(t_data *data, int fd)
 		return (printf("Error map : ligne vide\n"), 1);
 	if (check_spaceline(data->map))
 		return (printf("Error map : ligne vide spaceline\n"), 1);
-	if (check_setting(data->setting))
-		return (printf("Error settings"), 1);
+	// if (!check_order_settings(data))
+	// 	return (printf("Error settings"), 1);
 	if (check_map(data->map) == 1)
 		return (printf("Error map : caractere inconnu\n"), 1);
 	data->map = reform_map(data->map);

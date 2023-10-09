@@ -16,9 +16,22 @@
 # define LL_MIN -9223372036854775807
 # define width 640
 # define height 480
+# define texLargeur 64
+# define texHauteur 64
+
+typedef struct	s_img
+{
+	void	*img;
+	int		*dta;
+	int		size_l;
+	int		bpp;
+	int		endian;
+}				t_img;
 
 typedef struct t_game
 {
+	int		**buf;
+	int		re_buf;
 	double	posx;
 	double	posy;
 	double	dirx;
@@ -33,6 +46,8 @@ typedef struct t_game
 	int		floor_colors[3];
 	int		ceiling_colors[3];
 	char	*paths[4];
+	int		texture[8][texHauteur * texLargeur];
+	t_img	img;
 }			t_game;
 
 typedef struct t_data
@@ -64,6 +79,9 @@ int			check_map(char **map);
 int			check_vide(char **map);
 int			parsing(t_data *data, int fd);
 int			check_setting(char **str);
+int			check_order_settings(t_data *data);
+int			get_colors_settings(t_data *data);
+int			get_first_char_pos(char *str);
 int			check_space(char *str);
 int			fill_settings_array(char **str, t_data *data);
 int			check_perso(t_data *data);
@@ -78,8 +96,7 @@ void		move_up(t_data *data);
 void		move_down(t_data *data);
 void		move_left(t_data *data);
 void		move_right(t_data *data);
-int			get_colors_settings(t_data *data);
-int			get_first_char_pos(char *str);
-int	check_order_settings(t_data *data);
+void		draw(t_data *data);
+
 
 #endif

@@ -6,11 +6,23 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 20:46:36 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/06 20:07:18 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/09 19:07:57 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+void	draw(t_data *data)
+{
+	for (int y = 0; y < height; y++)
+	{
+		for (int x = 0; x < width; x++)
+		{
+			data->game.img.dta[y * width + x] = data->game.buf[y][x];
+		}
+	}
+	mlx_put_image_to_window(data->mlx, data->win, data->game.img.img, 0, 0);
+}
 
 void	calc(t_data *data)
 {
@@ -30,9 +42,20 @@ void	calc(t_data *data)
 	int		lineHeight;
 	int		drawStart;
 	int		drawEnd;
-	int		color;
+	// int		color;
 
 	x = 0;
+	if (data->game.re_buf == 1)
+	{
+		for (int i = 0; i < height; i++)
+		{
+			for (int j = 0; j < width; j++)
+			{
+				data->game.buf[i][j] = 0;
+			}
+		}
+		data->game.re_buf = 0;
+	}
 	while (x < width)
 	{
 		camerax = 2 * x / (double)width - 1;
@@ -95,15 +118,52 @@ void	calc(t_data *data)
 		drawEnd = lineHeight / 2 + height / 2;
 		if (drawEnd >= height)
 			drawEnd = height - 1;
-		if (data->map[mapy][mapx] == '1')
-			color = 0xFF0000;
+		int texNum = data->map[mapx][mapy];
+
+		// calculate value of wallX
+		double wallX;
+		if (side == 0)
+			wallX = data->game.posy + perpWalldist * raydiry;
 		else
-			color = 0xFFFF00;
-		if (side == 1)
-			color = color / 2;
-		verline(data, 0, drawStart, x, 0x0Cd9F5);
-		verline(data, drawEnd, width, x, 0xFFFFFF);
-		verline(data, drawStart, drawEnd, x, color);
+			wallX = data->game.posx + perpWalldist * raydirx;
+		wallX -= floor(wallX);
+
+		// x coordinate on the texture
+		int texX = (int)(wallX * (double)texLargeur);
+		if (side == 0 && raydirx > 0)
+			texX = texLargeur - texX - 1;
+		if (side == 1 && raydiry < 0)
+			texX = texLargeur - texX - 1;
+
+		// How much to increase the texture coordinate perscreen pixel
+		double step = 1.0 * texHauteur / lineHeight;
+		// Starting texture coordinate
+		double texPos = (drawStart - height / 2 + lineHeight / 2) * step;
+		// printf("%d %f %d\n", drawStart, texPos, lineHeight);
+		for (int y = drawStart; y < drawEnd; y++)
+		{
+			// Cast the texture coordinate to integer, and mask with (texHauteur - 1) in case of overflow
+			int texY = (int)texPos & (texHauteur - 1);
+			texPos += step;
+			// printf("%d %f %f\n", texY, texPos, step);
+			printf("%d\n", data->game.texture[texNum][texHauteur * texY + texX]);
+			int color = data->game.texture[texNum][texHauteur * texY + texX];
+			// make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
+			if (side == 1)
+				color = (color >> 1) & 8355711;
+			data->game.buf[y][x] = color;
+			data->game.re_buf = 1;
+		}
 		x++;
+		// if (data->map[mapx][mapy] == '1')
+		// 	color = 0xFF0000;
+		// else
+		// 	color = 0xFFFF00;
+		// if (side == 1)
+		// 	color = color / 2;
+		// verline(data, 0, drawStart, x, 0x0Cd9F5);
+		// verline(data, drawEnd, width, x, 0xFFFFFF);
+		// verline(data, drawStart, drawEnd, x, color);
+		// x++;
 	}
 }
