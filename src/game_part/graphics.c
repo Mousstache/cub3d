@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:17:49 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/09 22:50:27 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:16:12 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,10 @@ void	load_texture(t_data *data)
 {
 	t_img	img;
 
-	load_image(data, data->game.texture[0], "textures/eagle.xpm", &img);
-	load_image(data, data->game.texture[1], "textures/redbrick.xpm", &img);
-	load_image(data, data->game.texture[2], "textures/purplestone.xpm", &img);
-	load_image(data, data->game.texture[3], "textures/greystone.xpm", &img);
-	load_image(data, data->game.texture[4], "textures/bluestone.xpm", &img);
-	load_image(data, data->game.texture[5], "textures/mossy.xpm", &img);
-	load_image(data, data->game.texture[6], "textures/wood.xpm", &img);
-	load_image(data, data->game.texture[7], "textures/colorstone.xpm", &img);
+	load_image(data, data->game.texture[0], data->game.paths[0], &img);
+	load_image(data, data->game.texture[1], data->game.paths[1], &img);
+	load_image(data, data->game.texture[2], data->game.paths[2], &img);
+	load_image(data, data->game.texture[3], data->game.paths[3], &img);
 }
 
 int	main_loop(t_data *data)

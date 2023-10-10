@@ -49,6 +49,21 @@ typedef struct t_game
 	int		ceiling_colors[3];
 	char	*paths[4];
 	int		**texture;
+	double	raydirx;
+	double	raydiry;
+	int		mapx;
+	int		mapy;
+	double	sidedistx;
+	double	sidedisty;
+	double	deltadistx;
+	double	deltadisty;
+	int		stepx;
+	int		stepy;
+	int		lineHeight;
+	double	perpWalldist;
+	int		drawstart;
+	int		drawend;
+	int		side;
 	t_img	img;
 }			t_game;
 

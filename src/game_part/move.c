@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:59:13 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/06 21:30:29 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:54:01 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void move_down(t_data *data)
 	if (data->map[(int)(data->game.posx)][(int)(data->game.posy - data->game.diry * data->game.movespeed)] == '0')
 		data->game.posy -= data->game.diry * data->game.movespeed;
 }
+
 
 void move_left(t_data *data)
 {
