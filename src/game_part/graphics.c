@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:17:49 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/10 20:16:12 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:12:07 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	verline(t_data *data, int start, int end, int x, int color)
 	while (start <= end)
 		mlx_pixel_put(data->mlx, data->win, x, start++, color);
 }
+
 
 void	load_image(t_data *data, int *texture, char *path, t_img *img)
 {
@@ -75,8 +76,8 @@ int	graphic_part(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		exit(EXIT_FAILURE);
-	data->game.posx = 22.0;
-	data->game.posy = 11.5;
+	data->game.posx = 11.0;
+	data->game.posy = 3.5;
 	data->game.dirx = -1;
 	data->game.diry = 0;
 	data->game.planex = 0;

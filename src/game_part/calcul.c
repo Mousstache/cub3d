@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 20:46:36 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/10 20:15:24 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/10 21:41:33 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,38 @@ void	draw(t_data *data)
 		}
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->game.img.img, 0, 0);
+}
+
+int	set_rgb(int rgb[3])
+{
+	return (rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
+}
+
+void	ceiling_or_floor(t_data *data, int x, int q)
+{
+	int	i;
+	int	y;
+
+	i = 0;
+	if (q == 0)
+	{
+		while (i < data->game.drawstart)
+		{
+			data->game.buf[i][x] = set_rgb(data->game.ceiling_colors);
+			data->game.re_buf = 1;
+			i++;
+		}
+	}
+	else
+	{
+		y = data->game.drawend;
+		while (y < height)
+		{
+			data->game.buf[y][x] = set_rgb(data->game.floor_colors);
+			data->game.re_buf = 1;
+			y++;
+		}
+	}
 }
 
 void	initializebuff(t_data *data)
@@ -179,6 +211,8 @@ void	calc(t_data *data)
 		if (data->game.side == 1 && data->game.raydiry < 0)
 			texX = texLargeur - texX - 1;
 		boucle_a_caca(data, x, texNum, texX);
+		ceiling_or_floor(data, x, 0);
+		ceiling_or_floor(data, x, 1);
 		x++;
 	}
 }

@@ -114,6 +114,8 @@ void		move_down(t_data *data);
 void		move_left(t_data *data);
 void		move_right(t_data *data);
 void		draw(t_data *data);
+void		ceiling_or_floor(t_data *data, int x, int q);
+
 
 
 #endif
