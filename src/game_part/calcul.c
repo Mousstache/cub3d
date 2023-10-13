@@ -180,8 +180,12 @@ void define_draw(t_data *data)
 	if (data->game.drawstart < 0)
 		data->game.drawstart = 0;
 	data->game.drawend = data->game.lineHeight / 2 + height / 2;
-	if (data->game.drawend >= height)
+	if (data->game.drawend >= height || data->game.drawend < 0)
 		data->game.drawend = height - 1;
+	// else if (data->game.drawend < 0)
+	// 	data->game.drawend = width - 1;
+	//1x et 0y cst le sud
+	//-1x et 0y cst le nord
 }
 
 void	calc(t_data *data)

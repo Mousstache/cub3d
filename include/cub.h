@@ -14,8 +14,8 @@
 # include <sys/wait.h>
 # define LL_MAX 9223372036854775807UL
 # define LL_MIN -9223372036854775807
-# define width 640
-# define height 480
+# define width 1640
+# define height 1480
 # define texLargeur 64
 # define texHauteur 64
 

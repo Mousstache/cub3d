@@ -23,14 +23,15 @@ void free_mlx(t_data *data)
 
 int	free_palestine(t_data *data)
 {
-	// for (int i = 0; i < 4; i++)
-	// {
-	// 	printf("freeing %s\n", data->game.paths[i]);
-	// 	free(data->game.paths[i]);
-	// }
+	for (int i = 0; i < 4; i++)
+		free(data->game.paths[i]);
+	for (int i = 0; i < height, i++)
+		free(data->game.buf[i]);
+	free(data->game.buf);
 	free_all(data->setting);
 	free_all(data->map);
 	free_all(data->game.map_jeu);
+	// free_all(data->game.paths);
 	if (data->mlx)
 		free_mlx(data);
 	exit(1);

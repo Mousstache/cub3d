@@ -116,6 +116,9 @@ int	check_perso(t_data *data)
 				z++;
 				data->game.posx = (double)y;
 				data->game.posy = (double)x;
+				// if (data->map[y][x] == 'N')
+				// 	data->game.dirx = -1;
+				// printf("x = [%f] y = [%f]\n", data->game.posx, data->game.posy);
 				data->dir = data->map[y][x];
 			}
 			x++;
