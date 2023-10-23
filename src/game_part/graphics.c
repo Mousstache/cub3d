@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:17:49 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/12 17:12:07 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/17 21:20:23 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	load_image(t_data *data, int *texture, char *path, t_img *img)
 
 void	load_texture(t_data *data)
 {
-	// t_img	img;
-
 	load_image(data, data->game.texture[0], data->game.paths[0], &data->game.img);
 	load_image(data, data->game.texture[1], data->game.paths[1], &data->game.img);
 	load_image(data, data->game.texture[2], data->game.paths[2], &data->game.img);
@@ -52,8 +50,14 @@ int	main_loop(t_data *data)
 
 int	key_press(int key, t_data *data)
 {
+	int ret;
+
+	ret = 0;
 	if (key == 'w')
-		move_up(data);
+	{
+		ret = move_up(data);
+		// printf("%d\n", ret);
+	}
 	if (key == 's')
 		move_down(data);
 	if (key == 'a')
@@ -68,6 +72,11 @@ int	key_press(int key, t_data *data)
 	{
 		free_palestine(data);
 		exit(0);
+	}
+	if (ret)
+	{
+		// printf("dsasa\n");
+		return (0);
 	}
 	mlx_clear_window(data->mlx, data->win);
 	main_loop(data);
@@ -108,12 +117,13 @@ int	graphic_part(t_data *data)
 	data->game.planex = 0.66 * data->game.diry;
 	data->game.planey = 0.66 * (data->game.dirx * -1);
 	data->game.re_buf = 1;
-	data->game.buf = (int **)malloc(sizeof(int *) * height);
-	if (!(data->game.texture = (int **)malloc(sizeof(int *) * 8)))
+	data->game.buf = (int **)malloc(sizeof(int *) * height + 1000);
+	
+	if (!(data->game.texture = (int **)malloc(sizeof(int *) * 8 + 1000)))
 		return (-1);
 	for (int i = 0; i < height; i++)
 	{
-		data->game.buf[i] = (int *)malloc(sizeof(int) * width);
+		data->game.buf[i] = (int *)malloc(sizeof(int) * width + 1000);
 	}
 	for (int i = 0; i < 8; i++)
 	{

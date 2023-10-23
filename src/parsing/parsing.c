@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:39 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/10 16:04:26 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/13 22:17:17 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void get_map(t_data *data, int fd, char *str)
 	}
 	data->map = ft_split(tmp, '\n');
 	free(tmp);
+	get_next_line(fd, 1);
 	free(str);
 }
 

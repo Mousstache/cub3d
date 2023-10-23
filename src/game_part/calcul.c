@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 20:46:36 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/10 21:41:33 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:29:27 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 
 void	draw(t_data *data)
 {
-	for (int y = 0; y < height; y++)
+	int y;
+	int x;
+
+	y = 0;
+	while (y < height)
 	{
-		for (int x = 0; x < width; x++)
+		x = 0;
+		while (x < width)
 		{
-			data->game.img.dta[y * width + x] = data->game.buf[y][x];
+			data->game.buf[y][x] = 0;
+			x++;
 		}
+		y++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->game.img.img, 0, 0);
 }
@@ -37,22 +44,22 @@ void	ceiling_or_floor(t_data *data, int x, int q)
 	i = 0;
 	if (q == 0)
 	{
-		while (i < data->game.drawstart)
+		if (data->game.drawstart > 1919)
+			printf(">%d\n", data->game.drawstart);
+		while (i < data->game.drawstart&& i < height)
 		{
 			data->game.buf[i][x] = set_rgb(data->game.ceiling_colors);
 			data->game.re_buf = 1;
 			i++;
 		}
+		return ;
 	}
-	else
+	y = data->game.drawend;
+	while (y < height)
 	{
-		y = data->game.drawend;
-		while (y < height)
-		{
-			data->game.buf[y][x] = set_rgb(data->game.floor_colors);
-			data->game.re_buf = 1;
-			y++;
-		}
+		data->game.buf[y][x] = set_rgb(data->game.floor_colors);
+		data->game.re_buf = 1;
+		y++;
 	}
 }
 
@@ -215,7 +222,9 @@ void	calc(t_data *data)
 		if (data->game.side == 1 && data->game.raydiry < 0)
 			texX = texLargeur - texX - 1;
 		boucle_a_caca(data, x, texNum, texX);
+		// plafond
 		ceiling_or_floor(data, x, 0);
+		// sol
 		ceiling_or_floor(data, x, 1);
 		x++;
 	}

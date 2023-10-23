@@ -14,8 +14,8 @@
 # include <sys/wait.h>
 # define LL_MAX 9223372036854775807UL
 # define LL_MIN -9223372036854775807
-# define width 1640
-# define height 1480
+# define width 680
+# define height 680
 # define texLargeur 64
 # define texHauteur 64
 
@@ -109,7 +109,7 @@ int			graphic_part(t_data *data);
 void		verline(t_data *data, int start, int end, int x, int color);
 void		rotate_left(t_data *data);
 void		rotate_right(t_data *data);
-void		move_up(t_data *data);
+int			move_up(t_data *data);
 void		move_down(t_data *data);
 void		move_left(t_data *data);
 void		move_right(t_data *data);
