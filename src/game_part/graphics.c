@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:17:49 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/17 21:20:23 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/25 21:01:49 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	verline(t_data *data, int start, int end, int x, int color)
 void	load_image(t_data *data, int *texture, char *path, t_img *img)
 {
 	img->img = mlx_xpm_file_to_image(data->mlx, path, &img->img_width, &img->img_height);
+	if (!img->img)
+	{
+		printf("Error\nInvalid texture path\n");
+		free_palestine(data);
+	}
 	img->dta = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->size_l, &img->endian);
 	for (int y = 0; y < img->img_height; y++)
 	{
@@ -50,14 +55,8 @@ int	main_loop(t_data *data)
 
 int	key_press(int key, t_data *data)
 {
-	int ret;
-
-	ret = 0;
 	if (key == 'w')
-	{
-		ret = move_up(data);
-		// printf("%d\n", ret);
-	}
+		move_up(data);
 	if (key == 's')
 		move_down(data);
 	if (key == 'a')
@@ -72,11 +71,6 @@ int	key_press(int key, t_data *data)
 	{
 		free_palestine(data);
 		exit(0);
-	}
-	if (ret)
-	{
-		// printf("dsasa\n");
-		return (0);
 	}
 	mlx_clear_window(data->mlx, data->win);
 	main_loop(data);

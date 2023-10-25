@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 21:48:23 by yahouari          #+#    #+#             */
-/*   Updated: 2023/10/10 16:23:35 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/25 20:39:10 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	check_only_id(char **tab)
 	int	pos;
 
 	i = 0;
+	if (!tab)
+		return (0);
 	while (i < 4)
 	{
 		pos = get_first_char_pos(tab[i]) + 2;

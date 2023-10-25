@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 19:04:27 by motroian          #+#    #+#             */
-/*   Updated: 2023/09/21 20:03:38 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/25 20:30:10 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ char	**ft_split(char const *s, char c)
 {
 	char	**res;
 
+	if (!s)
+		return (NULL);
 	res = ft_calloc(sizeof(char *), (count_str(s, c) + 1));
 	if (res == NULL)
 		return (NULL);

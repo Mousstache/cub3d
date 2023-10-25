@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:50:27 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/13 20:58:49 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/25 21:02:34 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void free_mlx(t_data *data)
 	for (int i = 0; i < 8; i++)
 		free(data->game.texture[i]);
 	free(data->game.texture);
-	mlx_destroy_image(data->mlx, data->game.img.img);
+	if (data->game.img.img)
+		mlx_destroy_image(data->mlx, data->game.img.img);
 	mlx_clear_window(data->mlx, data->win);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);

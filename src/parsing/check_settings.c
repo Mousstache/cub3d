@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_settings.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 20:58:56 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/03 18:13:30 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/10/25 20:38:51 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int get_first_char_pos(char *str)
 	int i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	return (i);

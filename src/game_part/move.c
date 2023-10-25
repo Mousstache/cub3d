@@ -6,13 +6,13 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:59:13 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/16 19:09:44 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/25 20:49:58 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	move_up(t_data *data)
+void	move_up(t_data *data)
 {
 	char	pos_x;
 	char	pos_y;
@@ -23,13 +23,10 @@ int	move_up(t_data *data)
 	y = (int)(data->game.posy + data->game.diry * data->game.movespeed);
 	pos_x = data->map[x][(int)(data->game.posy)];
 	pos_y = data->map[(int)(data->game.posx)][y];
-	if (pos_x == '1' || pos_y == '1')
-		return (1);
 	if (pos_x == '0')
 		data->game.posx += data->game.dirx * data->game.movespeed;
 	if (pos_y == '0')
 		data->game.posy += data->game.diry * data->game.movespeed;
-	return (0);
 }
 
 void move_down(t_data *data)

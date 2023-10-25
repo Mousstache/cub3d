@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:39 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/13 22:17:17 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/25 20:32:45 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,18 @@ void get_map(t_data *data, int fd, char *str)
 	char	*tmp;
 
 	tmp = NULL;
-	i = 0;
+	i = -1;
 	while (*str)
 	{
-		if (!check_space(str))
-		{
-			i++;
-			tmp = ft_strjoin2(tmp, str);
-		}
+		tmp = ft_strjoin2(tmp, str);
 		check_line(data, str);
 		free(str);
 		str = get_next_line(fd, 0);
+	}
+	while (tmp && tmp[++i])
+	{
+		if (tmp[i] == '\n' && tmp[i + 1] == '\n')
+			data->line_bool = 1;
 	}
 	data->map = ft_split(tmp, '\n');
 	free(tmp);
@@ -111,7 +112,7 @@ void	get_setting(t_data *data, int fd)
 	tmp = NULL;
 	i = 0;
 	str = get_next_line(fd, 0);
-	while (str && i <= 5)
+	while (*str && i <= 5)
 	{
 		if (!check_space(str))
 		{
@@ -121,7 +122,7 @@ void	get_setting(t_data *data, int fd)
 		free(str);
 		str = get_next_line(fd, 0);
 	}
-	while (check_space(str))
+	while (str && *str && check_space(str))
 	{
 		free(str);
 		str = get_next_line(fd, 0);

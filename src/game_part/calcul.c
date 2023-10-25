@@ -6,11 +6,23 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 20:46:36 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/23 21:29:27 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/25 20:42:21 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+// void	draw(t_data *data)
+// {
+// 	for (int y = 0; y < height; y++)
+// 	{
+// 		for (int x = 0; x < width; x++)
+// 		{
+// 			data->game.img.dta[y * width + x] = data->game.buf[y][x];
+// 		}
+// 	}
+// 	mlx_put_image_to_window(data->mlx, data->win, data->game.img.img, 0, 0);
+// }
 
 void	draw(t_data *data)
 {
@@ -23,7 +35,7 @@ void	draw(t_data *data)
 		x = 0;
 		while (x < width)
 		{
-			data->game.buf[y][x] = 0;
+			data->game.img.dta[y * width + x] = data->game.buf[y][x];
 			x++;
 		}
 		y++;
@@ -44,9 +56,7 @@ void	ceiling_or_floor(t_data *data, int x, int q)
 	i = 0;
 	if (q == 0)
 	{
-		if (data->game.drawstart > 1919)
-			printf(">%d\n", data->game.drawstart);
-		while (i < data->game.drawstart&& i < height)
+		while (i < data->game.drawstart && i < height)
 		{
 			data->game.buf[i][x] = set_rgb(data->game.ceiling_colors);
 			data->game.re_buf = 1;
@@ -229,14 +239,3 @@ void	calc(t_data *data)
 		x++;
 	}
 }
-
-		// if (data->map[mapx][mapy] == '1')
-		// 	color = 0xFF0000;
-		// else
-		// 	color = 0xFFFF00;
-		// if (side == 1)
-		// 	color = color / 2;
-		// verline(data, 0, data->game.drawStart, x, 0x0Cd9F5);
-		// verline(data, drawEnd, width, x, 0xFFFFFF);
-		// verline(data, drawStart, drawEnd, x, color);
-		// x++;

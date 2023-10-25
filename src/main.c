@@ -6,7 +6,7 @@
 /*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:33 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/09 18:15:38 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/25 20:13:44 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int main(int ac, char **av)
 		close(fd);
 	}
 	else
-		printf("Error nb arguments\n");
+		return (printf("Error nb arguments\n"), 2);
+	return (0);	
 }
