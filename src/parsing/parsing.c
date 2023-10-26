@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:39 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/25 20:32:45 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:21:03 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,32 +35,32 @@ int	check_name(char *str)
 	return (1);
 }
 
-int	check_space(char *str)
-{
-	int	i;
+// int	check_space(char *str)
+// {
+// 	int	i;
 
-	i = 0;
-	while (str && str[i])
-	{
-		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
-			return (0);
-		i++;
-	}
-	return (1);
-}
+// 	i = 0;
+// 	while (str && str[i])
+// 	{
+// 		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
+// 			return (0);
+// 		i++;
+// 	}
+// 	return (1);
+// }
 
-void	check_line(t_data *data, char *str)
-{
-	int	i;
+// void	check_line(t_data *data, char *str)
+// {
+// 	int	i;
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n' && str[i + 1] == '\n')
-			data->line_bool = 1;
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (str[i])
+// 	{
+// 		if (str[i] == '\n' && str[i + 1] == '\n')
+// 			data->line_bool = 1;
+// 		i++;
+// 	}
+// }
 
 int	check_spaceline(char **str)
 {
@@ -78,7 +78,7 @@ int	check_spaceline(char **str)
 	return (0);
 }
 
-void get_map(t_data *data, int fd, char *str)
+void	get_map(t_data *data, int fd, char *str)
 {
 	int		i;
 	char	*tmp;

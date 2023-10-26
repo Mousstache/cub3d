@@ -3,48 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:17:49 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/25 21:01:49 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/26 22:19:37 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
-
-void	verline(t_data *data, int start, int end, int x, int color)
-{
-	while (start <= end)
-		mlx_pixel_put(data->mlx, data->win, x, start++, color);
-}
-
-
-void	load_image(t_data *data, int *texture, char *path, t_img *img)
-{
-	img->img = mlx_xpm_file_to_image(data->mlx, path, &img->img_width, &img->img_height);
-	if (!img->img)
-	{
-		printf("Error\nInvalid texture path\n");
-		free_palestine(data);
-	}
-	img->dta = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->size_l, &img->endian);
-	for (int y = 0; y < img->img_height; y++)
-	{
-		for (int x = 0; x < img->img_width; x++)
-		{
-			texture[img->img_width * y + x] = img->dta[img->img_width * y + x];
-		}
-	}
-	mlx_destroy_image(data->mlx, img->img);
-}
-
-void	load_texture(t_data *data)
-{
-	load_image(data, data->game.texture[0], data->game.paths[0], &data->game.img);
-	load_image(data, data->game.texture[1], data->game.paths[1], &data->game.img);
-	load_image(data, data->game.texture[2], data->game.paths[2], &data->game.img);
-	load_image(data, data->game.texture[3], data->game.paths[3], &data->game.img);
-}
 
 int	main_loop(t_data *data)
 {
@@ -99,7 +65,29 @@ void	define_view_side(t_data *data)
 		data->game.dirx = 0;
 		data->game.diry = 1;
 	}
+}
 
+void	init_malloc_graph_part(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	data->game.buf = (int **)malloc(sizeof(int *) * height + 1000);
+	data->game.texture = (int **)malloc(sizeof(int *) * 8 + 1000);
+	while (++i < height)
+		data->game.buf[i] = (int *)malloc(sizeof(int) * width + 1);
+	i = -1;
+	while (++i < 8)
+		data->game.texture[i] = (int *)malloc(sizeof(int) * (texHauteur
+					* texLargeur));
+	i = -1;
+	while (++i < 8)
+	{
+		j = -1;
+		while (++j < (texHauteur * texHauteur))
+			data->game.texture[i][j] = 0;
+	}
 }
 
 int	graphic_part(t_data *data)
@@ -111,32 +99,15 @@ int	graphic_part(t_data *data)
 	data->game.planex = 0.66 * data->game.diry;
 	data->game.planey = 0.66 * (data->game.dirx * -1);
 	data->game.re_buf = 1;
-	data->game.buf = (int **)malloc(sizeof(int *) * height + 1000);
-	
-	if (!(data->game.texture = (int **)malloc(sizeof(int *) * 8 + 1000)))
-		return (-1);
-	for (int i = 0; i < height; i++)
-	{
-		data->game.buf[i] = (int *)malloc(sizeof(int) * width + 1000);
-	}
-	for (int i = 0; i < 8; i++)
-	{
-		if (!(data->game.texture[i] = (int *)malloc(sizeof(int) * (texHauteur * texLargeur))))
-			return (-1);
-	}
-	for (int i = 0; i < 8; i++)
-	{
-		for (int j = 0; j < texHauteur * texLargeur; j++)
-		{
-			data->game.texture[i][j] = 0;
-		}
-	}
+	init_malloc_graph_part(data);
 	data->game.movespeed = 0.5;
 	data->game.rotspeed = 0.09;
 	data->win = mlx_new_window(data->mlx, width, height, "le cuvub");
 	load_texture(data);
 	data->game.img.img = mlx_new_image(data->mlx, width, height);
-	data->game.img.dta = (int *)mlx_get_data_addr(data->game.img.img, &data->game.img.bpp, &data->game.img.size_l, &data->game.img.endian);
+	data->game.img.dta = (int *)mlx_get_data_addr(data->game.img.img,
+			&data->game.img.bpp, &data->game.img.size_l,
+			&data->game.img.endian);
 	main_loop(data);
 	mlx_hook(data->win, 0, 1L << 0, &key_press, data);
 	mlx_hook(data->win, 17, 0, &free_palestine, data);

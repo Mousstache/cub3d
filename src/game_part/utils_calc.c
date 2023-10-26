@@ -1,0 +1,98 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_calc.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/26 18:45:54 by yahouari          #+#    #+#             */
+/*   Updated: 2023/10/26 21:41:04 by yahouari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub.h"
+
+void	draw(t_data *data)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < height)
+	{
+		x = 0;
+		while (x < width)
+		{
+			data->game.img.dta[y * width + x] = data->game.buf[y][x];
+			x++;
+		}
+		y++;
+	}
+	mlx_put_image_to_window(data->mlx, data->win, data->game.img.img, 0, 0);
+}
+
+int	set_rgb(int rgb[3])
+{
+	return (rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
+}
+
+void	ceiling_or_floor(t_data *data, int x, int q)
+{
+	int	i;
+	int	y;
+
+	i = 0;
+	if (q == 0)
+	{
+		while (i < data->game.drawstart && i < height)
+		{
+			data->game.buf[i][x] = set_rgb(data->game.ceiling_colors);
+			data->game.re_buf = 1;
+			i++;
+		}
+		return ;
+	}
+	y = data->game.drawend;
+	while (y < height)
+	{
+		data->game.buf[y][x] = set_rgb(data->game.floor_colors);
+		data->game.re_buf = 1;
+		y++;
+	}
+}
+
+void	initializebuff(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	j = -1;
+	while (++i < height)
+		while (++j < width)
+			data->game.buf[i][j] = 0;
+}
+
+void	define(t_game *game)
+{
+	if (game->raydirx < 0)
+	{
+		game->stepx = -1;
+		game->sidedistx = (game->posx - game->mapx) * game->deltadistx;
+	}
+	else
+	{
+		game->stepx = 1;
+		game->sidedistx = (game->mapx + 1.0 - game->posx) * game->deltadistx;
+	}
+	if (game->raydiry < 0)
+	{
+		game->stepy = -1;
+		game->sidedisty = (game->posy - game->mapy) * game->deltadisty;
+	}
+	else
+	{
+		game->stepy = 1;
+		game->sidedisty = (game->mapy + 1.0 - game->posy) * game->deltadisty;
+	}
+}

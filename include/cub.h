@@ -14,12 +14,12 @@
 # include <sys/wait.h>
 # define LL_MAX 9223372036854775807UL
 # define LL_MIN -9223372036854775807
-# define width 680
+# define width 1680
 # define height 680
 # define texLargeur 64
 # define texHauteur 64
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img;
 	int		*dta;
@@ -28,7 +28,7 @@ typedef struct	s_img
 	int		endian;
 	int		img_width;
 	int		img_height;
-}				t_img;
+}			t_img;
 
 typedef struct t_game
 {
@@ -114,7 +114,18 @@ void		move_left(t_data *data);
 void		move_right(t_data *data);
 void		draw(t_data *data);
 void		ceiling_or_floor(t_data *data, int x, int q);
-
-
+int			ft_isspace(char c);
+int			check_virgule(char *str);
+void		check_line(t_data *data, char *str);
+int			check_space(char *str);
+void		draw(t_data *data);
+int			set_rgb(int rgb[3]);
+void		ceiling_or_floor(t_data *data, int x, int q);
+void		initializebuff(t_data *data);
+void		define(t_game *game);
+int			choose_texture(t_data *data, int texNum);
+void		load_image(t_data *data, int *texture, char *path, t_img *img);
+void		load_texture(t_data *data);
+void	define_side(t_data *data);
 
 #endif

@@ -3,21 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   free_palestine.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:50:27 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/25 21:02:34 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/26 21:37:37 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub.h"
+#include "cub.h"
 
-void free_mlx(t_data *data)
+void	free_mlx(t_data *data)
 {
-	for (int i = 0; i < height; i++)
+	int	i;
+
+	i = -1;
+	while (++i < height)
 		free(data->game.buf[i]);
 	free(data->game.buf);
-	for (int i = 0; i < 8; i++)
+	i = -1;
+	while (++i < 8)
 		free(data->game.texture[i]);
 	free(data->game.texture);
 	if (data->game.img.img)
@@ -31,7 +35,10 @@ void free_mlx(t_data *data)
 
 int	free_palestine(t_data *data)
 {
-	for (int i = 0; i < 4; i++)
+	int	i;
+
+	i = -1;
+	while (++i < 4)
 		free(data->game.paths[i]);
 	free_all(data->setting);
 	free_all(data->map);
@@ -41,8 +48,9 @@ int	free_palestine(t_data *data)
 	exit(1);
 	return (0);
 }
-void	ft_printtab(char **str)
-{
-	for(int i = 0; str[i]; i++)
-		printf("%s\n", str[i]);
-}
+
+// void	ft_printtab(char **str)
+// {
+// 	for (int i = 0; str[i]; i++)
+// 		printf("%s\n", str[i]);
+// }

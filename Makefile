@@ -8,8 +8,10 @@ SRCS =	src/parsing/parsing.c \
 		src/parsing/get_next_line_utils.c \
 		src/game_part/move.c \
 		src/game_part/calcul.c \
+		src/game_part/utils_calc.c \
 		src/game_part/rotate.c \
 		src/game_part/graphics.c \
+		src/game_part/graphic_utils.c \
 		src/main.c \
 		src/free_palestine.c \
 

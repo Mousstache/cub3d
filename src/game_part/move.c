@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:59:13 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/25 20:49:58 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/26 21:40:39 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,32 @@ void	move_up(t_data *data)
 		data->game.posy += data->game.diry * data->game.movespeed;
 }
 
-void move_down(t_data *data)
+void	move_down(t_data *data)
 {
-	if (data->map[(int)(data->game.posx - data->game.dirx * data->game.movespeed)][(int)(data->game.posy)] == '0')
+	if (data->map[(int)(data->game.posx - data->game.dirx
+			* data->game.movespeed)][(int)(data->game.posy)] == '0')
 		data->game.posx -= data->game.dirx * data->game.movespeed;
-	if (data->map[(int)(data->game.posx)][(int)(data->game.posy - data->game.diry * data->game.movespeed)] == '0')
+	if (data->map[(int)(data->game.posx)][(int)(data->game.posy
+			- data->game.diry * data->game.movespeed)] == '0')
 		data->game.posy -= data->game.diry * data->game.movespeed;
 }
 
-
-void move_left(t_data *data)
+void	move_left(t_data *data)
 {
-	if (data->map[(int)(data->game.posx - data->game.diry * data->game.movespeed)][(int)(data->game.posy)] == '0')
+	if (data->map[(int)(data->game.posx - data->game.diry
+			* data->game.movespeed)][(int)(data->game.posy)] == '0')
 		data->game.posx -= data->game.diry * data->game.movespeed;
-	if (data->map[(int)(data->game.posx)][(int)(data->game.posy + data->game.dirx * data->game.movespeed)] == '0')
+	if (data->map[(int)(data->game.posx)][(int)(data->game.posy
+			+ data->game.dirx * data->game.movespeed)] == '0')
 		data->game.posy += data->game.dirx * data->game.movespeed;
 }
 
-void move_right(t_data *data)
+void	move_right(t_data *data)
 {
-	if (data->map[(int)(data->game.posx + data->game.diry * data->game.movespeed)][(int)(data->game.posy)] == '0')
+	if (data->map[(int)(data->game.posx + data->game.diry
+			* data->game.movespeed)][(int)(data->game.posy)] == '0')
 		data->game.posx += data->game.diry * data->game.movespeed;
-	if (data->map[(int)(data->game.posx)][(int)(data->game.posy - data->game.dirx * data->game.movespeed)] == '0')
+	if (data->map[(int)(data->game.posx)][(int)(data->game.posy
+			- data->game.dirx * data->game.movespeed)] == '0')
 		data->game.posy -= data->game.dirx * data->game.movespeed;
 }

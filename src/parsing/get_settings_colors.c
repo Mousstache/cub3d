@@ -3,39 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_settings_colors.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:08:38 by yahouari          #+#    #+#             */
-/*   Updated: 2023/10/06 22:16:06 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:18:54 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
-
-int	ft_isspace(char c)
-{
-	if (c == ' ' || c == '\t')
-		return (1);
-	return (0);
-}
-
-int 	check_virgule(char *str)
-{
-	int i;
-	int count;
-
-	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		if (str[i] == ',')
-			count++;
-		i++;
-	}
-	if (count > 2)
-		return (0);
-	return (1);
-}
 
 int	check_colors_settings2(t_data *data, int i, int j, int k)
 {
@@ -110,7 +85,7 @@ int	fill_colors_array(char **str, char **str1, t_data *data)
 
 int	check_digit_colors(int *tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 3)
@@ -127,11 +102,10 @@ int	get_colors_settings(t_data *data)
 	if (!check_colors_settings(data))
 		return (0);
 	if (!fill_colors_array(ft_split(data->setting[4] + 1, ','),
-							ft_split(data->setting[5] + 1, ','),
-							data))
+			ft_split(data->setting[5] + 1, ','), data))
 		return (0);
-	if (!check_digit_colors(data->game.floor_colors) || 
-		!check_digit_colors(data->game.ceiling_colors))
+	if (!check_digit_colors(data->game.floor_colors)
+		|| !check_digit_colors(data->game.ceiling_colors))
 		return (0);
 	return (1);
 }

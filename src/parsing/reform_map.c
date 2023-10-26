@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reform_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:47:49 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/11 19:06:46 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:19:26 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	get_max_length(char **tab)
 {
-	int tmp;
-	int i;
+	int	tmp;
+	int	i;
 
 	tmp = 0;
 	i = 0;
@@ -28,24 +28,11 @@ int	get_max_length(char **tab)
 	return (tmp);
 }
 
-// void	get_settings(t_data *data)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while (data->setting[i])
-// 	{
-// 		if (data->setting[i][0] == 'C')
-// 		else if (data->setting[i][0] == 'F')
-// 		else
-// 	}
-// }
-
-char *fill_string(char *str, int len)
+char	*fill_string(char *str, int len)
 {
-	int i;
-	int j;
-	char *new;
+	int		i;
+	int		j;
+	char	*new;
 
 	i = 0;
 	j = 1;
@@ -57,7 +44,7 @@ char *fill_string(char *str, int len)
 	{
 		if (str[i] == ' ')
 			new[j] = 'V';
-		else 
+		else
 			new[j] = str[i];
 		i++;
 		j++;
@@ -71,7 +58,7 @@ char *fill_string(char *str, int len)
 
 int	count_string(char **tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (tab[i])
@@ -79,11 +66,11 @@ int	count_string(char **tab)
 	return (i);
 }
 
-char **reform_map(char **tab)
+char	**reform_map(char **tab)
 {
-	int i;
-	int j;
-	char **new;
+	int		i;
+	int		j;
+	char	**new;
 
 	i = 0;
 	j = 1;

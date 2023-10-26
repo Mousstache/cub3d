@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 21:33:47 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/11 19:06:13 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:14:02 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	check_vide(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if ((map[y][x] == '0') || (map[y][x] == 'N')
-				|| (map[y][x] == 'S') || (map[y][x] == 'E') || (map[y][x] == 'W'))
+			if ((map[y][x] == '0') || (map[y][x] == 'N') || (map[y][x] == 'S')
+				|| (map[y][x] == 'E') || (map[y][x] == 'W'))
 			{
 				if (check_zero(map, x, y) == 1)
 					return (1);
@@ -87,9 +87,10 @@ int	check_map(char **map)
 		while (map[y][x])
 		{
 			if (map[y][x] != '1' && (map[y][x] != '0') && (map[y][x] != 'N')
-				&& (map[y][x] != 'S') && (map[y][x] != 'E') && (map[y][x] != 'W')
-				&& (map[y][x] != ' ' && (map[y][x] != '\t')))
-					return (1);
+				&& (map[y][x] != 'S') && (map[y][x] != 'E')
+				&& (map[y][x] != 'W') && (map[y][x] != ' '
+					&& (map[y][x] != '\t')))
+				return (1);
 			x++;
 		}
 		y++;
@@ -103,27 +104,22 @@ int	check_perso(t_data *data)
 	int	y;
 	int	x;
 
-	y = 0;
+	y = -1;
 	z = 0;
-	while (data->map[y])
+	while (data->map[++y])
 	{
-		x = 0;
-		while (data->map[y][x])
+		x = -1;
+		while (data->map[y][++x])
 		{
-			if ((data->map[y][x] == 'N') || (data->map[y][x] == 'S') || (data->map[y][x] == 'E')
-				|| (data->map[y][x] == 'W'))
+			if ((data->map[y][x] == 'N') || (data->map[y][x] == 'S')
+				|| (data->map[y][x] == 'E') || (data->map[y][x] == 'W'))
 			{
 				z++;
 				data->game.posx = (double)y;
 				data->game.posy = (double)x;
-				// if (data->map[y][x] == 'N')
-				// 	data->game.dirx = -1;
-				// printf("x = [%f] y = [%f]\n", data->game.posx, data->game.posy);
 				data->dir = data->map[y][x];
 			}
-			x++;
 		}
-		y++;
 	}
 	if (z == 1)
 		return (0);

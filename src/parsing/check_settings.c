@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_settings.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 20:58:56 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/25 20:38:51 by motroian         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:14:37 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	check_setting(char **str)
 	return (0);
 }
 
-int get_first_char_pos(char *str)
+int	get_first_char_pos(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -42,7 +42,7 @@ int get_first_char_pos(char *str)
 
 int	check_array_settings(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i <= 5)
@@ -54,10 +54,10 @@ int	check_array_settings(t_data *data)
 	return (1);
 }
 
-int		fill_settings_array(char **str, t_data *data)
+int	fill_settings_array(char **str, t_data *data)
 {
-	int pos;
-	int i;
+	int	pos;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -81,4 +81,3 @@ int		fill_settings_array(char **str, t_data *data)
 		return (0);
 	return (1);
 }
-
