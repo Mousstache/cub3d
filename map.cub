@@ -1,7 +1,7 @@
-NO ./textures/palestinou.xpm
+NO ./textures/CHOKBAR_1_.xpm
 SO ./textures/aladin_1_.xpm
 WE ./textures/CHOKBAR_1_.xpm
-EA ./textures/eny.xpm
+EA ./textures/aladin_1_.xpm
 
 F   0,255,250
 C   200,150,200
