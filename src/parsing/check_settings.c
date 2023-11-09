@@ -6,7 +6,7 @@
 /*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 20:58:56 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/26 18:14:37 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:31:14 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,28 +54,29 @@ int	check_array_settings(t_data *data)
 	return (1);
 }
 
-int	fill_settings_array(char **str, t_data *data)
+int	fill_settings_array(t_data *data)
 {
 	int	pos;
 	int	i;
 
-	i = 0;
-	while (str[i])
+	i = -1;
+	while (data->set[++i])
 	{
-		pos = get_first_char_pos(str[i]);
-		if (str[i][pos] == 'N' && str[i][pos + 1] == 'O')
+		pos = get_first_char_pos(data->set[i]);
+		if (data->set[i][pos] == 'N' && data->set[i][pos + 1] == 'O')
 			data->identifier[0] = 1;
-		else if (str[i][pos] == 'S' && str[i][pos + 1] == 'O')
+		else if (data->set[i][pos] == 'S' && data->set[i][pos + 1] == 'O')
 			data->identifier[1] = 1;
-		else if (str[i][pos] == 'W' && str[i][pos + 1] == 'E')
+		else if (data->set[i][pos] == 'W' && data->set[i][pos
+				+ 1] == 'E')
 			data->identifier[2] = 1;
-		else if (str[i][pos] == 'E' && str[i][pos + 1] == 'A')
+		else if (data->set[i][pos] == 'E' && data->set[i][pos
+				+ 1] == 'A')
 			data->identifier[3] = 1;
-		else if (str[i][pos] == 'F')
+		else if (data->set[i][pos] == 'F')
 			data->identifier[4] = 1;
-		else if (str[i][pos] == 'C')
+		else if (data->set[i][pos] == 'C')
 			data->identifier[5] = 1;
-		i++;
 	}
 	if (check_array_settings(data) == 0)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 21:48:23 by yahouari          #+#    #+#             */
-/*   Updated: 2023/10/26 18:28:53 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:34:41 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,18 @@ int	check_order_setting2(t_data *data, int i)
 {
 	int	pos;
 
-	pos = get_first_char_pos(data->setting[i]);
-	if (i == 0 && data->setting[i] && data->setting[i][pos] == 'N')
-		data->game.paths[i] = reform_string(data->setting[i], 2, pos);
-	else if (i == 1 && data->setting[i] && data->setting[i][pos] == 'S')
-		data->game.paths[i] = reform_string(data->setting[i], 2, pos);
-	else if (i == 2 && data->setting[i] && data->setting[i][pos] == 'W')
-		data->game.paths[i] = reform_string(data->setting[i], 2, pos);
-	else if (i == 3 && data->setting[i] && data->setting[i][pos] == 'E')
-		data->game.paths[i] = reform_string(data->setting[i], 2, pos);
-	else if (i == 4 && data->setting[i][pos] == 'F')
+	pos = get_first_char_pos(data->set[i]);
+	if (i == 0 && data->set[i] && data->set[i][pos] == 'N')
+		data->game.paths[i] = reform_string(data->set[i], 2, pos);
+	else if (i == 1 && data->set[i] && data->set[i][pos] == 'S')
+		data->game.paths[i] = reform_string(data->set[i], 2, pos);
+	else if (i == 2 && data->set[i] && data->set[i][pos] == 'W')
+		data->game.paths[i] = reform_string(data->set[i], 2, pos);
+	else if (i == 3 && data->set[i] && data->set[i][pos] == 'E')
+		data->game.paths[i] = reform_string(data->set[i], 2, pos);
+	else if (i == 4 && data->set[i][pos] == 'F')
 		i += 0;
-	else if (i == 5 && data->setting[i][pos] == 'C')
+	else if (i == 5 && data->set[i][pos] == 'C')
 	{
 		if (!get_colors_settings(data))
 			return (0);
@@ -88,12 +88,14 @@ int	check_order_settings(t_data *data)
 	int	i;
 
 	i = -1;
-	if (!check_only_id(data->setting))
+	if (!check_only_id(data->set))
 		return (0);
 	while (++i < 6)
 	{
 		if (!check_order_setting2(data, i))
 			return (0);
 	}
+	if (!fill_settings_array(data))
+		return (0);
 	return (1);
 }

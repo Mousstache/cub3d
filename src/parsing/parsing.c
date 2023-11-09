@@ -6,7 +6,7 @@
 /*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:39 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/26 18:21:03 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:35:58 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	get_setting(t_data *data, int fd)
 		free(str);
 		str = get_next_line(fd, 0);
 	}
-	data->setting = ft_split(tmp, '\n');
+	data->set = ft_split(tmp, '\n');
 	free(tmp);
 	get_map(data, fd, str);
 }

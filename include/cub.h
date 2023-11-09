@@ -78,7 +78,7 @@ typedef struct t_data
 	int		sol[3];
 	int		ciel[3];
 	char	**map;
-	char	**setting;
+	char	**set;
 	int		i;
 	int		line_bool;
 	t_game	game;
@@ -100,7 +100,7 @@ int			check_order_settings(t_data *data);
 int			get_colors_settings(t_data *data);
 int			get_first_char_pos(char *str);
 int			check_space(char *str);
-int			fill_settings_array(char **str, t_data *data);
+int			fill_settings_array(t_data *data);
 int			check_perso(t_data *data);
 void		calc(t_data *data);
 int			key_press(int key, t_data *data);

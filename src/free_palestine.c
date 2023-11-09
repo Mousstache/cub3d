@@ -6,7 +6,7 @@
 /*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:50:27 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/26 21:37:37 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:35:13 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	free_palestine(t_data *data)
 	i = -1;
 	while (++i < 4)
 		free(data->game.paths[i]);
-	free_all(data->setting);
+	free_all(data->set);
 	free_all(data->map);
 	free_all(data->game.map_jeu);
 	if (data->mlx)

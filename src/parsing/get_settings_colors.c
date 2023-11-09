@@ -6,7 +6,7 @@
 /*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:08:38 by yahouari          #+#    #+#             */
-/*   Updated: 2023/10/26 18:18:54 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:37:17 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 int	check_colors_settings2(t_data *data, int i, int j, int k)
 {
-	if (!check_virgule(data->setting[i]))
+	if (!check_virgule(data->set[i]))
 		return (0);
-	while (data->setting[i][j])
+	while (data->set[i][j])
 	{
-		while (data->setting[i][j] && ft_isspace(data->setting[i][j]))
+		while (data->set[i][j] && ft_isspace(data->set[i][j]))
 			j++;
-		if (ft_isdigit(data->setting[i][j]))
+		if (ft_isdigit(data->set[i][j]))
 		{
 			k++;
-			while (data->setting[i][j] && ft_isdigit(data->setting[i][j]))
+			while (data->set[i][j] && ft_isdigit(data->set[i][j]))
 				j++;
 		}
-		while (data->setting[i][j] && ft_isspace(data->setting[i][j]))
+		while (data->set[i][j] && ft_isspace(data->set[i][j]))
 			j++;
-		if (k < 3 && data->setting[i][j++] == ',')
+		if (k < 3 && data->set[i][j++] == ',')
 			continue ;
-		else if (k == 3 && data->setting[i][j] == 0)
+		else if (k == 3 && data->set[i][j] == 0)
 			return (1);
 		else
 			return (0);
@@ -101,8 +101,8 @@ int	get_colors_settings(t_data *data)
 {
 	if (!check_colors_settings(data))
 		return (0);
-	if (!fill_colors_array(ft_split(data->setting[4] + 1, ','),
-			ft_split(data->setting[5] + 1, ','), data))
+	if (!fill_colors_array(ft_split(data->set[4] + 1, ','),
+			ft_split(data->set[5] + 1, ','), data))
 		return (0);
 	if (!check_digit_colors(data->game.floor_colors)
 		|| !check_digit_colors(data->game.ceiling_colors))
