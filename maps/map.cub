@@ -1,7 +1,7 @@
 NO ./textures/CHOKBAR_1_.xpm
 SO ./textures/aladin_1_.xpm
-WE ./textures/chokabavar.xpm
 EA ./textures/tah_sah.xpm
+WE ./textures/chokabavar.xpm
 
 F   0, 32, 214
 C   200,150,200
