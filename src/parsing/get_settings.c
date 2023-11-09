@@ -6,7 +6,7 @@
 /*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 21:48:23 by yahouari          #+#    #+#             */
-/*   Updated: 2023/11/09 19:34:41 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:13:58 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ int	check_only_id(char **tab)
 		while (tab[i][pos] && tab[i][pos] != '.')
 		{
 			if (tab[i][pos] != ' ' && tab[i][pos] != '\t')
-			{
-				printf("LE ->%c", tab[i][pos]);
 				return (0);
-			}
 			pos++;
 		}
 		i++;

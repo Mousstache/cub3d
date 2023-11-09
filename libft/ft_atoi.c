@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motroian <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:12:25 by motroian          #+#    #+#             */
-/*   Updated: 2022/11/18 17:20:04 by motroian         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:12:40 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_atoi(const char *str)
 {
 	int	i;
 	int	j;
-	int	k;
+	long long	k;
 
 	i = 0;
 	j = 0;
@@ -36,5 +36,7 @@ int	ft_atoi(const char *str)
 	}
 	if (j == 1)
 		return (k * -1);
+	if (k > 2147483647 || k < -2147483648)
+		return (-1);
 	return (k);
 }
