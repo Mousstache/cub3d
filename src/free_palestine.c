@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_palestine.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:50:27 by motroian          #+#    #+#             */
-/*   Updated: 2023/11/09 19:35:13 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:39:56 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_mlx(t_data *data)
 	int	i;
 
 	i = -1;
-	while (++i < height)
+	while (++i < HEIGHT)
 		free(data->game.buf[i]);
 	free(data->game.buf);
 	i = -1;

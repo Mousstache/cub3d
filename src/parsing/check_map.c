@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 21:33:47 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/26 18:14:02 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:57:21 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	check_map(char **map)
 	int	x;
 
 	y = 0;
+	if (!map)
+		return (1);
 	while (map[y])
 	{
 		x = 0;

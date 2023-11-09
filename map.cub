@@ -3,7 +3,7 @@ SO ./textures/aladin_1_.xpm
 WE ./textures/chokabavar.xpm
 EA ./textures/tah_sah.xpm
 
-F   5000, 0,127
+F   50, 0,127
 C   200,150,200
 
 1111111111111111111111111111111

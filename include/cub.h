@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/09 20:32:22 by motroian          #+#    #+#             */
+/*   Updated: 2023/11/09 20:34:34 by motroian         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB_H
 # define CUB_H
 
@@ -14,10 +26,10 @@
 # include <sys/wait.h>
 # define LL_MAX 9223372036854775807UL
 # define LL_MIN -9223372036854775807
-# define width 1680
-# define height 680
-# define texLargeur 64
-# define texHauteur 64
+# define WIDTH 1680
+# define HEIGHT 680
+# define TEXLARGEUR 64
+# define TEXHAUTEUR 64
 
 typedef struct s_img
 {
@@ -59,8 +71,8 @@ typedef struct t_game
 	double	deltadisty;
 	int		stepx;
 	int		stepy;
-	int		lineHeight;
-	double	perpWalldist;
+	int		lineheight;
+	double	perpwalldist;
 	int		drawstart;
 	int		drawend;
 	int		side;
@@ -105,7 +117,6 @@ int			check_perso(t_data *data);
 void		calc(t_data *data);
 int			key_press(int key, t_data *data);
 int			graphic_part(t_data *data);
-void		verline(t_data *data, int start, int end, int x, int color);
 void		rotate_left(t_data *data);
 void		rotate_right(t_data *data);
 void		move_up(t_data *data);
@@ -126,6 +137,6 @@ void		define(t_game *game);
 int			choose_texture(t_data *data, int texNum);
 void		load_image(t_data *data, int *texture, char *path, t_img *img);
 void		load_texture(t_data *data);
-void	define_side(t_data *data);
+void		define_side(t_data *data);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:17:49 by motroian          #+#    #+#             */
-/*   Updated: 2023/10/26 22:19:37 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:49:37 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,19 @@ void	init_malloc_graph_part(t_data *data)
 	int	j;
 
 	i = -1;
-	data->game.buf = (int **)malloc(sizeof(int *) * height + 1000);
-	data->game.texture = (int **)malloc(sizeof(int *) * 8 + 1000);
-	while (++i < height)
-		data->game.buf[i] = (int *)malloc(sizeof(int) * width + 1);
+	data->game.buf = (int **)malloc(sizeof(int *) * HEIGHT);
+	data->game.texture = (int **)malloc(sizeof(int *) * 8);
+	while (++i < HEIGHT)
+		data->game.buf[i] = (int *)malloc(sizeof(int) * WIDTH + 1);
 	i = -1;
 	while (++i < 8)
-		data->game.texture[i] = (int *)malloc(sizeof(int) * (texHauteur
-					* texLargeur));
+		data->game.texture[i] = (int *)malloc(sizeof(int) * (TEXHAUTEUR
+					* TEXLARGEUR));
 	i = -1;
 	while (++i < 8)
 	{
 		j = -1;
-		while (++j < (texHauteur * texHauteur))
+		while (++j < (TEXHAUTEUR * TEXHAUTEUR))
 			data->game.texture[i][j] = 0;
 	}
 }
@@ -102,9 +102,9 @@ int	graphic_part(t_data *data)
 	init_malloc_graph_part(data);
 	data->game.movespeed = 0.5;
 	data->game.rotspeed = 0.09;
-	data->win = mlx_new_window(data->mlx, width, height, "le cuvub");
+	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "le cuvub");
 	load_texture(data);
-	data->game.img.img = mlx_new_image(data->mlx, width, height);
+	data->game.img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->game.img.dta = (int *)mlx_get_data_addr(data->game.img.img,
 			&data->game.img.bpp, &data->game.img.size_l,
 			&data->game.img.endian);

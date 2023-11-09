@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_calc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:45:54 by yahouari          #+#    #+#             */
-/*   Updated: 2023/11/09 19:57:06 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:48:43 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	draw(t_data *data)
 	int	x;
 
 	y = 0;
-	while (y < height)
+	while (y < HEIGHT)
 	{
 		x = 0;
-		while (x < width)
+		while (x < WIDTH)
 		{
-			data->game.img.dta[y * width + x] = data->game.buf[y][x];
+			data->game.img.dta[y * WIDTH + x] = data->game.buf[y][x];
 			x++;
 		}
 		y++;
@@ -44,7 +44,7 @@ void	ceiling_or_floor(t_data *data, int x, int q)
 	i = 0;
 	if (q == 0)
 	{
-		while (i < data->game.drawstart && i < height)
+		while (i < data->game.drawstart && i < HEIGHT)
 		{
 			data->game.buf[i][x] = set_rgb(data->game.ceiling_colors);
 			data->game.re_buf = 1;
@@ -53,7 +53,7 @@ void	ceiling_or_floor(t_data *data, int x, int q)
 		return ;
 	}
 	y = data->game.drawend;
-	while (y < height)
+	while (y < HEIGHT)
 	{
 		data->game.buf[y][x] = set_rgb(data->game.floor_colors);
 		data->game.re_buf = 1;
@@ -68,8 +68,8 @@ void	initializebuff(t_data *data)
 
 	i = -1;
 	j = -1;
-	while (++i < height)
-		while (++j < width)
+	while (++i < HEIGHT)
+		while (++j < WIDTH)
 			data->game.buf[i][j] = 0;
 }
 
