@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_calc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:45:54 by yahouari          #+#    #+#             */
-/*   Updated: 2023/11/09 20:48:43 by motroian         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:05:45 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ceiling_or_floor(t_data *data, int x, int q)
 		return ;
 	}
 	y = data->game.drawend;
-	while (y < HEIGHT)
+	while (y < HEIGHT - 1)
 	{
 		data->game.buf[y][x] = set_rgb(data->game.floor_colors);
 		data->game.re_buf = 1;
