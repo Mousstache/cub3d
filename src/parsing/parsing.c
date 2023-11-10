@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:39 by motroian          #+#    #+#             */
-/*   Updated: 2023/11/09 19:35:58 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:19:59 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,33 +34,6 @@ int	check_name(char *str)
 	}
 	return (1);
 }
-
-// int	check_space(char *str)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (str && str[i])
-// 	{
-// 		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
-// 			return (0);
-// 		i++;
-// 	}
-// 	return (1);
-// }
-
-// void	check_line(t_data *data, char *str)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		if (str[i] == '\n' && str[i + 1] == '\n')
-// 			data->line_bool = 1;
-// 		i++;
-// 	}
-// }
 
 int	check_spaceline(char **str)
 {
@@ -139,6 +112,8 @@ int	parsing(t_data *data, int fd)
 	game = data->game;
 	data->line_bool = 0;
 	get_setting(data, fd);
+	if (!data->map)
+		return (printf("Error map : map vide\n"), 1);
 	if (data->line_bool == 1)
 		return (printf("Error map : ligne vide\n"), 1);
 	if (check_spaceline(data->map))

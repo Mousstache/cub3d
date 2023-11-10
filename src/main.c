@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:15:33 by motroian          #+#    #+#             */
-/*   Updated: 2023/11/09 19:40:46 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:32:39 by motroian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,13 @@ int	check_virgule(char *str)
 	return (1);
 }
 
-int	main(int ac, char **av)
+int	main(int ac, char **av, char **env)
 {
 	int				fd;
 	static t_data	data = {0};
 
+	if (!env && !*env)
+		return (printf("Error: env\n"), 1);
 	if (ac == 2)
 	{
 		if (!check_name(av[1]))
@@ -79,10 +81,6 @@ int	main(int ac, char **av)
 		if (parsing(&data, fd))
 			return (close(fd), free_palestine(&data), 1);
 		close(fd);
-		data.game.dirx = -1;
-		data.game.diry = 0;
-		data.game.planex = 0;
-		data.game.planey = 0.66;
 		graphic_part(&data);
 		free_palestine(&data);
 		close(fd);
