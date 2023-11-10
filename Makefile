@@ -15,7 +15,7 @@ SRCS =	src/parsing/parsing.c \
 		src/main.c \
 		src/free_palestine.c \
 
-NAME = cub3d
+NAME = cub3D
 
 INC = -Iinclude
 

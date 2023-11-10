@@ -6,7 +6,7 @@
 /*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 21:48:23 by yahouari          #+#    #+#             */
-/*   Updated: 2023/11/10 18:00:51 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:13:29 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*reform_string(char *str, int to_pass, int pos)
 	new = malloc(sizeof(char) * ft_strlen(str));
 	while (str[j] == ' ' || str[j] == '\t')
 		j++;
-	while (str[j])
+	while (str[j] && !ft_isspace(str[j]))
 	{
 		new[i] = str[j];
 		i++;
