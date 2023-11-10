@@ -6,7 +6,7 @@
 /*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 21:48:23 by yahouari          #+#    #+#             */
-/*   Updated: 2023/11/09 22:55:32 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:00:51 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	check_only_id(char **tab)
 
 	i = 0;
 	if (!tab)
-		return (printf("poulettoooo\n"), 0);
+		return (0);
 	while (i < 6)
 	{
 		pos = get_first_char_pos(tab[i]);
@@ -50,7 +50,7 @@ int	check_only_id(char **tab)
 			while (tab[i][pos] && tab[i][pos] != '.')
 			{
 				if (tab[i][pos] != ' ' && tab[i][pos] != '\t')
-					return (printf("pollos\n"), 0);
+					return (0);
 				pos++;
 			}
 		}
@@ -87,7 +87,7 @@ int	check_order_settings(t_data *data)
 
 	i = -1;
 	if (!check_only_id(data->set))
-		return (printf("poule\n"),0);
+		return (0);
 	while (++i < 6)
 	{
 		if (!check_order_setting2(data, i))
@@ -96,6 +96,6 @@ int	check_order_settings(t_data *data)
 	if (!fill_settings_array(data))
 		return (0);
 	if (!get_colors_settings(data))
-			return (0);
+		return (0);
 	return (1);
 }

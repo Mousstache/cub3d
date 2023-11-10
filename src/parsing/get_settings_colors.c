@@ -6,7 +6,7 @@
 /*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:08:38 by yahouari          #+#    #+#             */
-/*   Updated: 2023/11/09 22:48:33 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:01:06 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	check_digit_colors(int *tab)
 int	get_colors_settings(t_data *data)
 {
 	if (!check_colors_settings(data))
-		return (printf("pollos"), 0);
+		return (0);
 	if (!fill_colors_array(ft_split(data->set[data->f] + 1, ','),
 			ft_split(data->set[data->c] + 1, ','), data))
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:32:22 by motroian          #+#    #+#             */
-/*   Updated: 2023/11/09 22:41:34 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:00:05 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct t_data
 	void	*mlx;
 	void	*win;
 	int		c;
-	int 	f;
+	int		f;
 	int		fd;
 	int		identifier[6];
 	int		sol[3];
