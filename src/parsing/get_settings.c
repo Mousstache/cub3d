@@ -6,7 +6,7 @@
 /*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 21:48:23 by yahouari          #+#    #+#             */
-/*   Updated: 2023/11/09 20:13:58 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/09 22:55:32 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,19 @@ int	check_only_id(char **tab)
 
 	i = 0;
 	if (!tab)
-		return (0);
-	while (i < 4)
+		return (printf("poulettoooo\n"), 0);
+	while (i < 6)
 	{
-		pos = get_first_char_pos(tab[i]) + 2;
-		while (tab[i][pos] && tab[i][pos] != '.')
+		pos = get_first_char_pos(tab[i]);
+		if (tab[i][pos] != 'F' && tab[i][pos] != 'C')
 		{
-			if (tab[i][pos] != ' ' && tab[i][pos] != '\t')
-				return (0);
-			pos++;
+			pos += 2;
+			while (tab[i][pos] && tab[i][pos] != '.')
+			{
+				if (tab[i][pos] != ' ' && tab[i][pos] != '\t')
+					return (printf("pollos\n"), 0);
+				pos++;
+			}
 		}
 		i++;
 	}
@@ -61,17 +65,17 @@ int	check_order_setting2(t_data *data, int i)
 
 	pos = get_first_char_pos(data->set[i]);
 	if (data->set[i] && data->set[i][pos] == 'N')
-		data->game.paths[i] = reform_string(data->set[i], 2, pos);
+		data->game.paths[0] = reform_string(data->set[i], 2, pos);
 	else if (data->set[i] && data->set[i][pos] == 'S')
-		data->game.paths[i] = reform_string(data->set[i], 2, pos);
+		data->game.paths[1] = reform_string(data->set[i], 2, pos);
 	else if (data->set[i] && data->set[i][pos] == 'W')
-		data->game.paths[i] = reform_string(data->set[i], 2, pos);
+		data->game.paths[2] = reform_string(data->set[i], 2, pos);
 	else if (data->set[i] && data->set[i][pos] == 'E')
-		data->game.paths[i] = reform_string(data->set[i], 2, pos);
+		data->game.paths[3] = reform_string(data->set[i], 2, pos);
 	else if (data->set[i][pos] == 'F')
-		i += 0;
+		data->f = i;
 	else if (data->set[i][pos] == 'C')
-		i += 0;
+		data->c = i;
 	else
 		return (0);
 	return (1);
@@ -83,15 +87,15 @@ int	check_order_settings(t_data *data)
 
 	i = -1;
 	if (!check_only_id(data->set))
-		return (0);
+		return (printf("poule\n"),0);
 	while (++i < 6)
 	{
 		if (!check_order_setting2(data, i))
 			return (0);
 	}
-	if (!get_colors_settings(data))
-			return (0);
 	if (!fill_settings_array(data))
 		return (0);
+	if (!get_colors_settings(data))
+			return (0);
 	return (1);
 }

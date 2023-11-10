@@ -6,7 +6,7 @@
 /*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:08:38 by yahouari          #+#    #+#             */
-/*   Updated: 2023/11/09 20:13:47 by yahouari         ###   ########.fr       */
+/*   Updated: 2023/11/09 22:48:33 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,14 @@ int	check_colors_settings(t_data *data)
 	int	j;
 	int	k;
 
-	i = 4;
+	i = 0;
 	while (i < 6)
 	{
 		k = 0;
 		j = 1;
-		if (!check_colors_settings2(data, i, j, k))
-			return (0);
+		if (i == data->f || i == data->c)
+			if (!check_colors_settings2(data, i, j, k))
+				return (0);
 		i++;
 	}
 	return (1);
@@ -100,9 +101,9 @@ int	check_digit_colors(int *tab)
 int	get_colors_settings(t_data *data)
 {
 	if (!check_colors_settings(data))
-		return (0);
-	if (!fill_colors_array(ft_split(data->set[4] + 1, ','),
-			ft_split(data->set[5] + 1, ','), data))
+		return (printf("pollos"), 0);
+	if (!fill_colors_array(ft_split(data->set[data->f] + 1, ','),
+			ft_split(data->set[data->c] + 1, ','), data))
 		return (0);
 	if (!check_digit_colors(data->game.floor_colors)
 		|| !check_digit_colors(data->game.ceiling_colors))

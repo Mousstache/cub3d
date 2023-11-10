@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motroian <motroian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yahouari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:32:22 by motroian          #+#    #+#             */
-/*   Updated: 2023/11/09 20:34:34 by motroian         ###   ########.fr       */
+/*   Updated: 2023/11/09 22:41:34 by yahouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ typedef struct t_data
 	int		pos[2];
 	void	*mlx;
 	void	*win;
+	int		c;
+	int 	f;
 	int		fd;
 	int		identifier[6];
 	int		sol[3];
